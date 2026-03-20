@@ -12,7 +12,7 @@ public class Main {
             @Override
             public void run() {
                 try {
-                    UIManager.setLookAndFeel(new FlatMacDarkLaf());
+                    //UIManager.setLookAndFeel(new FlatMacDarkLaf());
                     //UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
                     //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // Del sistema operativo
                     //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel"); // Feo

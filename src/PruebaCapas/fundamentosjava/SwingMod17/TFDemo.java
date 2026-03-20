@@ -1,0 +1,78 @@
+package SwingMod17;
+import java.awt.event.*;
+import java.awt.*;
+import javax.swing.*;
+import com.formdev.flatlaf.*;
+
+public class TFDemo implements ActionListener{
+    JTextField jtf;
+    JButton jbtnRev;
+    JLabel jlabPrompt, jlabContents;
+
+    TFDemo() throws Exception {
+        //UIManager.setLookAndFeel(new FlatDarkLaf());
+        //UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // Del sistema operativo
+        //UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel"); // Por defecto de Java
+        //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel"); // Feo
+
+
+        JFrame jfr = new JFrame("Usar un campo de texto.");
+        jfr.setLayout(new FlowLayout());
+        jfr.setSize(240, 180);
+        jfr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        jtf = new JTextField(10); // 10 columnas de ancho.
+        jtf.setActionCommand("myTF"); // Funciona igual sin esto pero mejor ponerlo.
+
+        jbtnRev = new JButton("Reverse");
+        //jbtnRev.setContentAreaFilled(false); // No rellenará el área de contenido.
+        jbtnRev.setBorderPainted(false); // No pintará el borde.
+        jbtnRev.setOpaque(false); // El botón no pintará su fondo.
+        jbtnRev.setFocusPainted(false); // No se ve el cuadro punteado cuando el botón tiene el foco.
+        jbtnRev.setToolTipText("Vamos a ver."); // Para mostrar mensajes al señalar con el mouse.
+
+        jtf.addActionListener(this);
+        jbtnRev.addActionListener(this);
+
+        jlabPrompt = new JLabel("Texto de entrada");
+        jlabContents = new JLabel("");
+
+        jfr.add(jlabPrompt);
+        jfr.add(jtf);
+        jfr.add(jbtnRev);
+        jfr.add(jlabContents);
+        jfr.setLocationRelativeTo(null);
+        jfr.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getActionCommand().equals("Reverse")) {
+            // El ActionCommand por defecto del JTextField es lo que hay en el campo de texto.
+            String orgStr = jtf.getText();
+            String resStr = "";
+
+            for (int i = orgStr.length()-1; i >= 0; i--) {
+                resStr += orgStr.charAt(i);
+            }
+            jtf.setText(resStr);
+        }   else {
+            jlabContents.setText("Has presionado ENTER. El texto es: " + jtf.getText());
+        }
+        // ae.getSource(); // Retorna el objeto evento.
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    new TFDemo();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+}

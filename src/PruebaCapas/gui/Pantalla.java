@@ -4,24 +4,42 @@ import com.formdev.flatlaf.*;
 import com.formdev.flatlaf.themes.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 
 public class Pantalla implements ActionListener {
     private final JFrame frame;
+    private JMenuBar menuBar;
+    private JMenu temas;
+    private JMenuItem system, nimbus;
     private JPanel mainPanel;
     private JLabel labelUno, labelDos;
     private JTextField textUno, textDos;
     private JButton buttonCopiar, buttonLimpiar;
 
     public Pantalla() throws Exception{
+        //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         frame = new JFrame("Copiadora");
         initComponents();
         setupFrame();
     }
 
     private void initComponents() {
-        //mainPanel = new JPanel(new MigLayout("insets 20, gap 10, wrap 1" ));
-        mainPanel = new JPanel(new MigLayout("debug, insets 20, gap 10, wrap 1" ));
+        mainPanel = new JPanel(new MigLayout("insets 20, gap 10, wrap 1" ));
+        //mainPanel = new JPanel(new MigLayout("debug, insets 20, gap 10, wrap 1" ));
+        menuBar = new JMenuBar();
+        frame.setJMenuBar(menuBar);
+
+        temas = new JMenu("Temas");
+        system = new JMenuItem("LaF System");
+        system.setActionCommand("System");
+        system.addActionListener(this);
+        nimbus = new JMenuItem("LaF Nimbus");
+        temas.add(system);
+        temas.add(nimbus);
+        menuBar.add(temas);
 
         labelUno = new JLabel("Ingrese un texto:");
         labelDos = new JLabel("El texto que usted ingresó es:");
@@ -39,9 +57,11 @@ public class Pantalla implements ActionListener {
         buttonLimpiar = new JButton("Limpiar");
         buttonLimpiar.addActionListener(this);
 
-        mainPanel.add(labelUno);
+        mainPanel.add(new ClockLabel());
+        mainPanel.add(labelUno, "gaptop 15");
         mainPanel.add(textUno);
-        mainPanel.add(buttonCopiar, "align center, gapy 15");
+        mainPanel.add(buttonCopiar, "align center, gaptop 15");
+        // El "!" de MigLayout significa: exactamente este valor, no negocies.
         // gapleft/gapright Xpx --> horizontal | gaptop/gapbottom Xpx --> vertical
         // X píxeles en una dirección del botón.
         // gw(x o y) X --> X píxeles en ambas direcciones.
@@ -55,8 +75,7 @@ public class Pantalla implements ActionListener {
     }
 
     private void setupFrame() throws Exception{
-
-        frame.setSize(300, 300);
+        frame.setSize(300, 400);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,5 +98,40 @@ public class Pantalla implements ActionListener {
             textUno.setText("");
             textDos.setText("");
         }
+
+        try {
+            if (ae.getActionCommand().equals("System")) {
+                textUno.setText("Funciona");
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                SwingUtilities.updateComponentTreeUI(frame);
+                frame.pack();
+            }
+
+//            if (ae.getSource() == system) {
+//                textUno.setText("Funciona");
+//                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//                SwingUtilities.updateComponentTreeUI(frame);
+//                frame.pack();
+//            }
+        }   catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class ClockLabel extends JLabel {
+    private static final DateTimeFormatter FORMATTER =
+            DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+    public ClockLabel() {
+        setHorizontalAlignment(SwingConstants.CENTER);
+        updateTime();
+
+        Timer timer = new Timer(1000, e -> updateTime());
+        timer.start();
+    }
+
+    private void updateTime() {
+        setText(LocalDateTime.now().format(FORMATTER));
     }
 }
