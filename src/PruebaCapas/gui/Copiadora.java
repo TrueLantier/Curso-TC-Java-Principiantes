@@ -1,15 +1,12 @@
 package PruebaCapas.gui;
 import net.miginfocom.swing.MigLayout;
-import com.formdev.flatlaf.*;
-import com.formdev.flatlaf.themes.*;
+
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.IOException;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-
-public class Pantalla implements ActionListener {
+public class Copiadora implements ActionListener {
     private final JFrame frame;
     private JMenuBar menuBar;
     private JMenu temas;
@@ -19,7 +16,7 @@ public class Pantalla implements ActionListener {
     private JTextField textUno, textDos;
     private JButton buttonCopiar, buttonLimpiar;
 
-    public Pantalla() throws Exception{
+    public Copiadora() throws Exception{
         //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         frame = new JFrame("Copiadora");
         initComponents();

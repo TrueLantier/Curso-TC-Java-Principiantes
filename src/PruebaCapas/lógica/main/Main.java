@@ -1,6 +1,7 @@
 package PruebaCapas.lógica.main;
 
-import PruebaCapas.gui.Pantalla;
+import PruebaCapas.agendatelefónica.gui.UIAgenda;
+import PruebaCapas.gui.Copiadora;
 import com.formdev.flatlaf.themes.*;
 import com.formdev.flatlaf.*;
 
@@ -12,15 +13,16 @@ public class Main {
             @Override
             public void run() {
                 try {
-                    //UIManager.setLookAndFeel(new FlatMacDarkLaf());
+                    UIManager.setLookAndFeel(new FlatMacDarkLaf());
                     //UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
                     //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // Del sistema operativo
                     //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel"); // Feo
-                    new Pantalla();
+                    new UIAgenda();
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
             }
         });
+
     }
 }
