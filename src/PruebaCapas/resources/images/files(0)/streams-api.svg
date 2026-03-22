@@ -1,0 +1,15 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="18" r="7" fill="#A78BFA"/>
+  <circle cx="28" cy="18" r="7" fill="#8B5CF6"/>
+  <circle cx="44" cy="18" r="7" fill="#7C3AED"/>
+  <line x1="12" y1="25" x2="12" y2="30" stroke="#7C3AED" stroke-width="1.5"/>
+  <line x1="28" y1="25" x2="28" y2="30" stroke="#7C3AED" stroke-width="1.5"/>
+  <line x1="44" y1="25" x2="44" y2="30" stroke="#7C3AED" stroke-width="1.5"/>
+  <rect x="4" y="30" width="72" height="16" rx="8" fill="#7C3AED" fill-opacity="0.1"/>
+  <rect x="4" y="30" width="72" height="16" rx="8" fill="none" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="40" y="38" text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-size="14" fill="#7C3AED" font-weight="bold">λ</text>
+  <line x1="36" y1="46" x2="36" y2="52" stroke="#7C3AED" stroke-width="1.5"/>
+  <line x1="56" y1="46" x2="56" y2="52" stroke="#7C3AED" stroke-width="1.5"/>
+  <circle cx="36" cy="60" r="7" fill="#A78BFA"/>
+  <circle cx="56" cy="60" r="7" fill="#7C3AED"/>
+</svg>

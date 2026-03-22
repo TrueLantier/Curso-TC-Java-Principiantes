@@ -1,0 +1,10 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <rect x="8" y="4" width="64" height="20" rx="5" fill="#5382A1"/>
+  <text x="40" y="14" text-anchor="middle" dominant-baseline="central" font-family="monospace" font-size="10" fill="white" font-weight="700">.java</text>
+  <path d="M40,24 L40,29 M37,27 L40,33 L43,27" stroke="#888" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="8" y="34" width="64" height="20" rx="5" fill="#3A6B9A"/>
+  <text x="40" y="44" text-anchor="middle" dominant-baseline="central" font-family="monospace" font-size="10" fill="white" font-weight="700">.class</text>
+  <path d="M40,54 L40,59 M37,57 L40,63 L43,57" stroke="#888" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="8" y="64" width="64" height="12" rx="5" fill="#1C4572"/>
+  <text x="40" y="70" text-anchor="middle" dominant-baseline="central" font-family="monospace" font-size="9" fill="#8BB8E8" font-weight="700">native</text>
+</svg>

@@ -103,13 +103,6 @@ public class Copiadora implements ActionListener {
                 SwingUtilities.updateComponentTreeUI(frame);
                 frame.pack();
             }
-
-//            if (ae.getSource() == system) {
-//                textUno.setText("Funciona");
-//                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//                SwingUtilities.updateComponentTreeUI(frame);
-//                frame.pack();
-//            }
         }   catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,0 +1,18 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="72" height="72" rx="10" fill="#060610"/>
+  <rect x="16" y="28" width="48" height="44" rx="4" fill="#1C1C28"/>
+  <rect x="12" y="24" width="56" height="8" rx="3" fill="#232338"/>
+  <ellipse cx="40" cy="36" rx="22" ry="8" fill="#0EA5E9" opacity="0.15"/>
+  <ellipse cx="40" cy="36" rx="18" ry="6" fill="#0284C7" opacity="0.2"/>
+  <ellipse cx="40" cy="36" rx="12" ry="4" fill="#38BDF8" opacity="0.3"/>
+  <ellipse cx="40" cy="36" rx="6" ry="2.5" fill="#7DD3FC" opacity="0.8"/>
+  <ellipse cx="40" cy="36" rx="3" ry="1.5" fill="white" opacity="0.9"/>
+  <line x1="40" y1="34" x2="40" y2="18" stroke="#38BDF8" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <line x1="36" y1="34" x2="30" y2="18" stroke="#38BDF8" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+  <line x1="44" y1="34" x2="50" y2="18" stroke="#38BDF8" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+  <line x1="16" y1="40" x2="64" y2="40" stroke="#2D2D3E" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <line x1="16" y1="52" x2="64" y2="52" stroke="#2D2D3E" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <line x1="16" y1="64" x2="64" y2="64" stroke="#2D2D3E" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <text x="22" y="47" font-family="serif" font-size="9" fill="#3D3D5E" opacity="0.8">⌘</text>
+  <text x="50" y="47" font-family="serif" font-size="9" fill="#3D3D5E" opacity="0.8">⌘</text>
+</svg>

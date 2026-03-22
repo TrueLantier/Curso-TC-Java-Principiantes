@@ -1,0 +1,9 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <rect x="24" y="4" width="32" height="14" rx="7" fill="#8B5CF6"/>
+  <path d="M40,18 L40,26" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="40,26 26,40 54,40" fill="#7C3AED"/>
+  <path d="M26,40 L10,40 L10,62 L28,62" stroke="#7C3AED" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M54,40 L70,40 L70,62 L52,62" stroke="#7C3AED" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <rect x="28" y="56" width="24" height="12" rx="6" fill="#A78BFA"/>
+  <text x="40" y="62" text-anchor="middle" dominant-baseline="central" font-family="monospace" font-size="7" fill="white" font-weight="700">START</text>
+</svg>

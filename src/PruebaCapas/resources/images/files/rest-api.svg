@@ -1,0 +1,8 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="8" width="72" height="15" rx="7" fill="#3B82F6"/>
+  <text x="40" y="16" text-anchor="middle" dominant-baseline="central" font-family="monospace" font-size="9" fill="white" font-weight="700">GET</text>
+  <rect x="4" y="30" width="72" height="15" rx="7" fill="#22C55E"/>
+  <text x="40" y="38" text-anchor="middle" dominant-baseline="central" font-family="monospace" font-size="9" fill="white" font-weight="700">POST</text>
+  <rect x="4" y="52" width="72" height="15" rx="7" fill="#F97316"/>
+  <text x="40" y="60" text-anchor="middle" dominant-baseline="central" font-family="monospace" font-size="9" fill="white" font-weight="700">DELETE</text>
+</svg>

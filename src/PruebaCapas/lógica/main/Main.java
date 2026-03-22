@@ -14,10 +14,9 @@ public class Main {
             public void run() {
                 try {
                     UIManager.setLookAndFeel(new FlatMacDarkLaf());
-                    //UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-                    //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // Del sistema operativo
-                    //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel"); // Feo
+                    //UIManager.setLookAndFeel(new FlatIntelliJLaf());
                     new UIAgenda();
+                    //new Copiadora();
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

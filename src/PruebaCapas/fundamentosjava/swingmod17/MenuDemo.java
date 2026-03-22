@@ -1,8 +1,8 @@
-package SwingMod17;
+package PruebaCapas.fundamentosjava.swingmod17;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
-import com.formdev.flatlaf.*;
+
 import com.formdev.flatlaf.themes.*;
 
 /*
@@ -32,7 +32,7 @@ public class MenuDemo implements ActionListener{
         menuBar = new JMenuBar();
         jFrame.setJMenuBar(menuBar);
 
-        ImageIcon imagen = new ImageIcon("src/SwingMod17/Images/coca-cola.png");
+        ImageIcon imagen = new ImageIcon("src/PruebaCapas/resources/images/coca-cola.png");
         Image imagenEscalada = imagen.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
         ImageIcon imagenUno = new ImageIcon(imagenEscalada);
         btnUno = new JButton(imagenUno);
@@ -42,12 +42,11 @@ public class MenuDemo implements ActionListener{
         Hay que agregarlo al JFrame. Y mejorarlo.
          */
 
-        ImageIcon imagen2 = new ImageIcon("src/SwingMod17/Images/icono1.jpeg");
+        ImageIcon imagen2 = new ImageIcon("src/PruebaCapas/resources/images/icono1.jpeg");
         Image imagenEscaladaDos = imagen2.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
         ImageIcon imagenDos = new ImageIcon(imagenEscaladaDos);
         btnDos = new JButton(imagenDos);
         labelDos = new JLabel(imagenDos);
-
 
 
         menuArchivo = new JMenu("Archivo");
@@ -71,7 +70,6 @@ public class MenuDemo implements ActionListener{
         menuTamaño = new JMenu("Tamaño");
 
 
-
         menuBar.add(menuArchivo);
         menuBar.add(menuTema);
         menuBar.add(menuFondo);
@@ -90,7 +88,6 @@ public class MenuDemo implements ActionListener{
     public void actionPerformed(ActionEvent actionEvent) {
 
     }
-
     //UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
     //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // Del sistema operativo
     //UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel"); // Por defecto de Java
