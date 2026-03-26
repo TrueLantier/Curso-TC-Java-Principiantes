@@ -23,8 +23,8 @@ public class UIAgenda implements ActionListener{
     private JButton buttonGuardar, buttonSiguiente, buttonAnterior;
     private JMenuBar menuBar;
     private JMenu menuTema, menuFondo;
-    ImageIcon imagen = new ImageIcon("src/PruebaCapas/resources/images/2084239.png");
-    Image imagenF = imagen.getImage();
+    ImageIcon imagenAntes, imagenDespués;
+    Image imagenEscalada;
 
     private String[][] matrizTemas = {
             {"FlatLaf Light",        FlatLightLaf.class.getName()},
@@ -39,6 +39,18 @@ public class UIAgenda implements ActionListener{
             {"Motif", "com.sun.java.swing.plaf.motif.MotifLookAndFeel"}
     };
     private JMenuItem[] temas = new JMenuItem[matrizTemas.length];
+
+    private String[][] matrizFondos = {
+            { "Predeterminado", "Perros.jpg"},
+            { "Mar", "Mar.jpg"},
+            { "Fitness Mujer", "Fitness Mujer.jpg"},
+            { "Fitness Hombre", "Fitness Hombre.jpg"},
+            { "Atardecer", "Atardecer.jpg"},
+            { "Río", "Río.jpg"},
+            { "Ciudad", "Ciudad.jpg"}
+    };
+    private JMenuItem[] fondos = new JMenuItem[matrizFondos.length];
+    private final String rutaFondos = "src/PruebaCapas/resources/images/";
 
     public UIAgenda() throws IOException {
         frame = new JFrame();
@@ -64,24 +76,29 @@ public class UIAgenda implements ActionListener{
         frame.setJMenuBar(menuBar);
 
         menuTema = new JMenu("Temas");
-        menuFondo = new JMenu("Fondos");
 
         ImageIcon imagenTemas = new ImageIcon("src/PruebaCapas/resources/images/icono1.jpeg");
-        //ImageIcon imagenTemas = new ImageIcon("src/PruebaCapas/resources/images/files(0)/java.svg");
         Image imageEscaladaTemas = imagenTemas.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         imagenTemas = new ImageIcon(imageEscaladaTemas);
         menuTema.setIcon(imagenTemas);
-
-        ImageIcon imagenFondo = new ImageIcon("src/PruebaCapas/resources/images/equip.png");
-        Image imageEscaladaFondo = imagenFondo.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-        imagenFondo = new ImageIcon(imageEscaladaFondo);
-        menuFondo.setIcon(imagenFondo);
 
         for (int i = 0; i < matrizTemas.length; i++) {
             temas[i] = new JMenuItem(matrizTemas[i][0]);
             menuTema.add(temas[i]);
             temas[i].addActionListener(this);
         }
+
+        menuFondo = new JMenu("Fondos");
+        for (int i = 0; i < matrizFondos.length; i++) {
+            fondos[i] = new JMenuItem(matrizFondos[i][0]);
+            menuFondo.add(fondos[i]);
+            fondos[i].addActionListener(this);
+        }
+
+        ImageIcon imagenFondo = new ImageIcon("src/PruebaCapas/resources/images/equip.png");
+        Image imageEscaladaFondo = imagenFondo.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        imagenFondo = new ImageIcon(imageEscaladaFondo);
+        menuFondo.setIcon(imagenFondo);
 
         labelCI = new JLabel("CI :");
         labelNombre = new JLabel("Nombre :");
@@ -155,17 +172,17 @@ public class UIAgenda implements ActionListener{
 
         /**
          * FUNCIONA
-         *         ImageIcon imagenA = new ImageIcon("src/PruebaCapas/resources/images/2084239.png");
-         *         labelFondo = new JLabel(imagenA);
-         *         labelFondo.setLayout(new MigLayout("insets 0, fill"));
-         *         labelFondo.add(mainPanel);
-         *         frame.setContentPane(labelFondo);
+         * ImageIcon imagenA = new ImageIcon("src/PruebaCapas/resources/images/2084239.png");
+         * labelFondo = new JLabel(imagenA);
+         * labelFondo.setLayout(new MigLayout("insets 0, fill"));
+         * labelFondo.add(mainPanel);
+         * frame.setContentPane(labelFondo);
          */
 
-        ImageIcon imagenA = new ImageIcon("src/PruebaCapas/resources/images/foto1.jpg");
-        Image imagenAA = imagenA.getImage().getScaledInstance(550, 350, Image.SCALE_SMOOTH);
-        ImageIcon imagenAAA = new ImageIcon(imagenAA);
-        labelFondo = new JLabel(imagenAAA);
+        imagenAntes = new ImageIcon("src/PruebaCapas/resources/images/Perros.jpg");
+        imagenEscalada = imagenAntes.getImage().getScaledInstance(550, 350, Image.SCALE_SMOOTH);
+        imagenDespués = new ImageIcon(imagenEscalada);
+        labelFondo = new JLabel(imagenDespués);
         labelFondo.setLayout(new MigLayout("insets 0, fill"));
         labelFondo.add(mainPanel);
         frame.setContentPane(labelFondo);
@@ -175,30 +192,31 @@ public class UIAgenda implements ActionListener{
 
     private void setupFrame() {
         frame.setSize(550, 350);
-        //frame.setResizable(false);
+        frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         frame.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
 
-        try {
-            for (int i = 0; i < matrizTemas.length; i++) {
-                if (ae.getActionCommand().equals(matrizTemas[i][0])) {
+        for (int i = 0; i < matrizTemas.length; i++) {
+            if (ae.getActionCommand().equals(matrizTemas[i][0])) {
+                try {
                     UIManager.setLookAndFeel(matrizTemas[i][1]);
                     SwingUtilities.updateComponentTreeUI(frame);
                     //frame.pack(); // Qué hace exactamente?
-                    //textÍndice.setText(matrizTemas[i][0]);
+                }   catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
-        }   catch (Exception e) {
-            e.printStackTrace();
         }
 
-
+        if (ae.getActionCommand().equals("Mar")) {
+            labelFondo.setText("");
+            textÍndice.setText("Funciona");
+        }
     }
 }
 

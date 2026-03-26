@@ -13,7 +13,6 @@ public class Main {
             public void run() {
                 try {
                     UIManager.setLookAndFeel(new FlatMacDarkLaf());
-                    //UIManager.setLookAndFeel(new FlatIntelliJLaf());
                     new UIAgenda();
                     //new Copiadora();
                 } catch (Exception e) {
