@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * ¿Qué hace pack()?
  * ¿Por qué no puedo cambiar el título?
+ * ¿Cómo cambio el fondo?
  */
 
 public class UIAgenda implements ActionListener{
@@ -101,6 +102,7 @@ public class UIAgenda implements ActionListener{
         menuFondo.setIcon(imagenFondo);
 
         labelCI = new JLabel("CI :");
+        labelCI.setBackground(new Color(1, 1, 1));
         labelNombre = new JLabel("Nombre :");
         labelApellido = new JLabel("Apellidos :");
         labelDirección = new JLabel("Dirección :");
@@ -179,15 +181,16 @@ public class UIAgenda implements ActionListener{
          * frame.setContentPane(labelFondo);
          */
 
-        imagenAntes = new ImageIcon("src/PruebaCapas/resources/images/Perros.jpg");
-        imagenEscalada = imagenAntes.getImage().getScaledInstance(550, 350, Image.SCALE_SMOOTH);
-        imagenDespués = new ImageIcon(imagenEscalada);
-        labelFondo = new JLabel(imagenDespués);
-        labelFondo.setLayout(new MigLayout("insets 0, fill"));
-        labelFondo.add(mainPanel);
-        frame.setContentPane(labelFondo);
+//        imagenAntes = new ImageIcon("src/PruebaCapas/resources/images/Perros.jpg");
+//        imagenAntes = new ImageIcon("src/PruebaCapas/resources/images/Mar.jpg");
+//        imagenEscalada = imagenAntes.getImage().getScaledInstance(550, 350, Image.SCALE_SMOOTH);
+//        imagenDespués = new ImageIcon(imagenEscalada);
+//        labelFondo = new JLabel(imagenDespués);
+//        labelFondo.setLayout(new MigLayout("insets 0, fill"));
+//        labelFondo.add(mainPanel);
+//        frame.setContentPane(labelFondo);
 
-        //frame.setContentPane(mainPanel);
+        frame.setContentPane(mainPanel);
     }
 
     private void setupFrame() {
