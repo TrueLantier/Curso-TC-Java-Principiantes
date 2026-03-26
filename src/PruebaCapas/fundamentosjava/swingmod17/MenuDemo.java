@@ -5,10 +5,6 @@ import javax.swing.*;
 
 import com.formdev.flatlaf.themes.*;
 
-/*
-Quiero hacer una clase que mezcle distintas cosas de Swing. Menús, temas, fondos, labels de imágenes, iconos.
- */
-
 public class MenuDemo implements ActionListener{
     JMenuBar menuBar;
     JMenu menuArchivo, menuTema, menuFondo, menuTamaño;
@@ -28,7 +24,6 @@ public class MenuDemo implements ActionListener{
         jFrame.setSize(600, 600);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
         menuBar = new JMenuBar();
         jFrame.setJMenuBar(menuBar);
 
@@ -38,16 +33,12 @@ public class MenuDemo implements ActionListener{
         btnUno = new JButton(imagenUno);
         labelUno = new JLabel(imagenUno);
         labelTextoUno = new JLabel("Coca-Cola", imagenUno, SwingConstants.CENTER);
-        /*
-        Hay que agregarlo al JFrame. Y mejorarlo.
-         */
 
         ImageIcon imagen2 = new ImageIcon("src/PruebaCapas/resources/images/icono1.jpeg");
         Image imagenEscaladaDos = imagen2.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
         ImageIcon imagenDos = new ImageIcon(imagenEscaladaDos);
         btnDos = new JButton(imagenDos);
         labelDos = new JLabel(imagenDos);
-
 
         menuArchivo = new JMenu("Archivo");
         Image imagenEscaladaIcono = imagen2.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
@@ -65,10 +56,8 @@ public class MenuDemo implements ActionListener{
             menuTema.add(temas[i]);
         }
 
-
         menuFondo = new JMenu("Fondos");
         menuTamaño = new JMenu("Tamaño");
-
 
         menuBar.add(menuArchivo);
         menuBar.add(menuTema);
@@ -79,7 +68,7 @@ public class MenuDemo implements ActionListener{
         jFrame.add(labelUno);
         jFrame.add(btnDos);
         jFrame.add(labelDos);
-        jFrame.setIconImage(imagenEscaladaIcono);
+        //jFrame.setIconImage(imagenEscaladaIcono);
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
     }
@@ -94,7 +83,7 @@ public class MenuDemo implements ActionListener{
     //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel"); // Feo
 
 
-    public static void main(String[] args) {
+     static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {

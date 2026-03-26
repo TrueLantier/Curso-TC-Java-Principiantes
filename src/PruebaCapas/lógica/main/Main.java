@@ -4,7 +4,6 @@ import PruebaCapas.agendatelefónica.gui.UIAgenda;
 import PruebaCapas.gui.Copiadora;
 import com.formdev.flatlaf.themes.*;
 import com.formdev.flatlaf.*;
-
 import javax.swing.*;
 
 public class Main {

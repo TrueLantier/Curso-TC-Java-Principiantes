@@ -18,13 +18,13 @@ public class UIAgenda implements ActionListener{
     private final JFrame frame;
     private JPanel mainPanel;
     private JLabel labelCI, labelNombre, labelApellido, labelFecha, labelTeléfono, labelDirección, labelÍndice,
-    labelLíneaDivisoria;
+    labelLíneaDivisoria, labelImagenUno, labelImagenDos, labelImagenTres, labelFondo;
     private JTextField textCI, textNombre, textApellido, textFecha, textTeléfono, textDirección, textÍndice;
     private JButton buttonGuardar, buttonSiguiente, buttonAnterior;
     private JMenuBar menuBar;
     private JMenu menuTema, menuFondo;
-    private JMenuItem temaNimbus, temaLocal, temaMetal, temaMotif, temaFMacLight, temaFMacDark, temaFDark, temaFLight,
-            temaFIntelliJ, temaFDarcula;
+    ImageIcon imagen = new ImageIcon("src/PruebaCapas/resources/images/2084239.png");
+    Image imagenF = imagen.getImage();
 
     private String[][] matrizTemas = {
             {"FlatLaf Light",        FlatLightLaf.class.getName()},
@@ -51,7 +51,15 @@ public class UIAgenda implements ActionListener{
 
     private void initComponents() {
         //mainPanel = new JPanel(new MigLayout("debug, insets 20, gap 10, fillx" ));
+//        mainPanel = new JPanel(new MigLayout("insets 20, gap 10, wrap 4" )) {
+//            @Override
+//            protected void paintComponent(Graphics g) {
+//                super.paintComponent(g);
+//                g.drawImage(imagenF, 0, 0, getWidth(), getHeight(), this);
+//            }
+//        };
         mainPanel = new JPanel(new MigLayout("insets 20, gap 10, wrap 4" ));
+
         menuBar = new JMenuBar();
         frame.setJMenuBar(menuBar);
 
@@ -64,8 +72,12 @@ public class UIAgenda implements ActionListener{
         imagenTemas = new ImageIcon(imageEscaladaTemas);
         menuTema.setIcon(imagenTemas);
 
+        ImageIcon imagenFondo = new ImageIcon("src/PruebaCapas/resources/images/equip.png");
+        Image imageEscaladaFondo = imagenFondo.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        imagenFondo = new ImageIcon(imageEscaladaFondo);
+        menuFondo.setIcon(imagenFondo);
+
         for (int i = 0; i < matrizTemas.length; i++) {
-            //temas[i] = new JMenuItem(nombresTemas[i]);
             temas[i] = new JMenuItem(matrizTemas[i][0]);
             menuTema.add(temas[i]);
             temas[i].addActionListener(this);
@@ -77,8 +89,22 @@ public class UIAgenda implements ActionListener{
         labelDirección = new JLabel("Dirección :");
         labelTeléfono = new JLabel("Teléfono :");
         labelFecha = new JLabel("F. Nac :");
-        labelLíneaDivisoria = new JLabel("");
         labelÍndice = new JLabel("Índice :");
+
+        ImageIcon imagenLabelUno = new ImageIcon("src/PruebaCapas/resources/images/attack.png");
+        Image imagenEscaladaLabelUno = imagenLabelUno.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        ImageIcon imagenUno = new ImageIcon(imagenEscaladaLabelUno);
+        labelImagenUno = new JLabel(imagenUno);
+
+        ImageIcon imagenLabelDos = new ImageIcon("src/PruebaCapas/resources/images/act.png");
+        Image imagenEscaladaLabelDos = imagenLabelDos.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        ImageIcon imagenDos = new ImageIcon(imagenEscaladaLabelDos);
+        labelImagenDos = new JLabel(imagenDos);
+
+        ImageIcon imagenLabelTres = new ImageIcon("src/PruebaCapas/resources/images/chain.png");
+        Image imagenEscaladaLabelTres = imagenLabelTres.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        ImageIcon imagenTres = new ImageIcon(imagenEscaladaLabelTres);
+        labelImagenTres = new JLabel(imagenTres);
 
         textCI = new JTextField(20);
         textNombre = new JTextField(20);
@@ -93,42 +119,66 @@ public class UIAgenda implements ActionListener{
         buttonGuardar = new JButton("Guardar");
         buttonSiguiente = new JButton(">>");
 
-        JPanel fila3 = new JPanel(new MigLayout("insets 0, gap 10"));
+        JPanel fila3 = new JPanel(new MigLayout("insets 0, gap 10, wrap 4"));
         fila3.add(buttonAnterior, "gapleft 140");
         fila3.add(buttonGuardar);
         fila3.add(buttonSiguiente);
+        fila3.setOpaque(false);
+        //fila3.setBackground(new Color(0, 0, 0));
 
         menuBar.add(menuTema);
         menuBar.add(menuFondo);
 
-        mainPanel.add(labelCI);
+        mainPanel.add(labelCI, "align right");
         mainPanel.add(textCI);
         mainPanel.add(labelDirección);
         mainPanel.add(textDirección);
-        mainPanel.add(labelNombre);
+        mainPanel.add(labelNombre, "align right");
         mainPanel.add(textNombre);
         mainPanel.add(labelTeléfono);
         mainPanel.add(textTeléfono);
-        mainPanel.add(labelApellido);
+        mainPanel.add(labelApellido, "align right");
         mainPanel.add(textApellido);
         mainPanel.add(labelFecha);
         mainPanel.add(textFecha);
         //mainPanel.add(new JSeparator(), "growx, span, wrap");
-        mainPanel.add(fila3, "span, gap 0 0 10 10, wrap");
-        //mainPanel.add(buttonAnterior, "gap 50 0 0 10");
+        mainPanel.add(fila3, "span, gap 0 0 10 10");
         //mainPanel.add(new JSeparator(), "growx, span, wrap");
         mainPanel.add(labelÍndice, "span 2, align right");
         mainPanel.add(textÍndice, "wrap");
-        mainPanel.add(new ClockLabel(), "span, align left");
+        mainPanel.add(new ClockLabel());
+        mainPanel.add(labelImagenUno);
+        mainPanel.add(labelImagenDos);
+        mainPanel.add(labelImagenTres, "align center");
+        mainPanel.setOpaque(false);
+        //mainPanel.setBackground(new Color(0, 0, 0));
 
-        frame.setContentPane(mainPanel);
+        /**
+         * FUNCIONA
+         *         ImageIcon imagenA = new ImageIcon("src/PruebaCapas/resources/images/2084239.png");
+         *         labelFondo = new JLabel(imagenA);
+         *         labelFondo.setLayout(new MigLayout("insets 0, fill"));
+         *         labelFondo.add(mainPanel);
+         *         frame.setContentPane(labelFondo);
+         */
+
+        ImageIcon imagenA = new ImageIcon("src/PruebaCapas/resources/images/foto1.jpg");
+        Image imagenAA = imagenA.getImage().getScaledInstance(550, 350, Image.SCALE_SMOOTH);
+        ImageIcon imagenAAA = new ImageIcon(imagenAA);
+        labelFondo = new JLabel(imagenAAA);
+        labelFondo.setLayout(new MigLayout("insets 0, fill"));
+        labelFondo.add(mainPanel);
+        frame.setContentPane(labelFondo);
+
+        //frame.setContentPane(mainPanel);
     }
 
     private void setupFrame() {
         frame.setSize(550, 350);
-        frame.setResizable(false);
+        //frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         frame.setVisible(true);
     }
 
