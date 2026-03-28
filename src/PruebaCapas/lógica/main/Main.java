@@ -12,6 +12,8 @@ public class Main {
             @Override
             public void run() {
                 try {
+                    //FlatLightLaf.setup(); // o el tema que uses por defecto
+                    JFrame.setDefaultLookAndFeelDecorated(true);
                     UIManager.setLookAndFeel(new FlatMacDarkLaf());
                     new UIAgenda();
                     //new Copiadora();

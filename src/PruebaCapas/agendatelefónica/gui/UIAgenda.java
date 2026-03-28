@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter;
 /**
  * ¿Qué hace pack()?
  * ¿Por qué no puedo cambiar el título?
- * ¿Cómo cambio el fondo?
  */
 
 public class UIAgenda implements ActionListener{
@@ -56,8 +55,8 @@ public class UIAgenda implements ActionListener{
     public UIAgenda() throws IOException {
         frame = new JFrame();
         frame.setTitle("Agenda telefónica");
-//        frame.getRootPane().putClientProperty("JRootPane.titleBarBackground", new Color(25, 25, 25));
-//        frame.getRootPane().putClientProperty("JRootPane.titleBarForeground", Color.BLACK);
+        frame.getRootPane().putClientProperty("JRootPane.titleBarBackground", new Color(25, 25, 25));
+        frame.getRootPane().putClientProperty("JRootPane.titleBarForeground", Color.CYAN);
         initComponents();
         setupFrame();
     }
@@ -102,7 +101,6 @@ public class UIAgenda implements ActionListener{
         menuFondo.setIcon(imagenFondo);
 
         labelCI = new JLabel("CI :");
-        labelCI.setBackground(new Color(1, 1, 1));
         labelNombre = new JLabel("Nombre :");
         labelApellido = new JLabel("Apellidos :");
         labelDirección = new JLabel("Dirección :");
@@ -181,16 +179,15 @@ public class UIAgenda implements ActionListener{
          * frame.setContentPane(labelFondo);
          */
 
-//        imagenAntes = new ImageIcon("src/PruebaCapas/resources/images/Perros.jpg");
-//        imagenAntes = new ImageIcon("src/PruebaCapas/resources/images/Mar.jpg");
-//        imagenEscalada = imagenAntes.getImage().getScaledInstance(550, 350, Image.SCALE_SMOOTH);
-//        imagenDespués = new ImageIcon(imagenEscalada);
-//        labelFondo = new JLabel(imagenDespués);
-//        labelFondo.setLayout(new MigLayout("insets 0, fill"));
-//        labelFondo.add(mainPanel);
-//        frame.setContentPane(labelFondo);
+        imagenAntes = new ImageIcon("src/PruebaCapas/resources/images/Perros.jpg");
+        imagenEscalada = imagenAntes.getImage().getScaledInstance(550, 350, Image.SCALE_SMOOTH);
+        imagenDespués = new ImageIcon(imagenEscalada);
+        labelFondo = new JLabel(imagenDespués);
+        labelFondo.setLayout(new MigLayout("insets 0, fill"));
+        labelFondo.add(mainPanel);
+        frame.setContentPane(labelFondo);
 
-        frame.setContentPane(mainPanel);
+        //frame.setContentPane(mainPanel);
     }
 
     private void setupFrame() {
@@ -213,13 +210,23 @@ public class UIAgenda implements ActionListener{
                 }   catch (Exception e) {
                     e.printStackTrace();
                 }
+                return;
             }
         }
 
-        if (ae.getActionCommand().equals("Mar")) {
-            labelFondo.setText("");
-            textÍndice.setText("Funciona");
+        for (int i = 0; i < matrizFondos.length; i++) {
+            if (ae.getActionCommand().equals(matrizFondos[i][0])) {
+                ImageIcon nueva = new ImageIcon(rutaFondos + matrizFondos[i][1]);
+                Image escalada  = nueva.getImage().getScaledInstance(550, 350, Image.SCALE_SMOOTH);
+                labelFondo.setIcon(new ImageIcon(escalada));
+                return;
+            }
         }
+
+//        if (ae.getActionCommand().equals("Mar")) {
+//            labelFondo.setText("");
+//            textÍndice.setText("Funciona");
+//        }
     }
 }
 
@@ -240,3 +247,36 @@ class ClockLabel extends JLabel {
     }
 }
 
+/*
+labelCI        = new JLabel("<html><font color='#000000'>CI :</font></html>");
+labelNombre    = new JLabel("<html><font color='#000000'>Nombre :</font></html>");
+labelApellido  = new JLabel("<html><font color='#000000'>Apellidos :</font></html>");
+labelDirección = new JLabel("<html><font color='#000000'>Dirección :</font></html>");
+labelTeléfono  = new JLabel("<html><font color='#000000'>Teléfono :</font></html>");
+labelFecha     = new JLabel("<html><font color='#000000'>F. Nac :</font></html>");
+labelÍndice    = new JLabel("<html><font color='#000000'>Índice :</font></html>");
+
+private void applyLabelColors() {
+    Color color = Color.BLACK;
+    labelCI.setForeground(color);
+    labelNombre.setForeground(color);
+    labelApellido.setForeground(color);
+    labelDirección.setForeground(color);
+    labelTeléfono.setForeground(color);
+    labelFecha.setForeground(color);
+    labelÍndice.setForeground(color);
+}
+
+for (int i = 0; i < matrizTemas.length; i++) {
+    if (ae.getActionCommand().equals(matrizTemas[i][0])) {
+        try {
+            UIManager.setLookAndFeel(matrizTemas[i][1]);
+            SwingUtilities.updateComponentTreeUI(frame);
+            applyLabelColors(); // aquí
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return;
+    }
+}
+ */
