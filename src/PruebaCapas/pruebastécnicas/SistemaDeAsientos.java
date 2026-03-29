@@ -8,7 +8,7 @@ public class SistemaDeAsientos {
 
     public SistemaDeAsientos() {
         cargarAsientos();
-        System.out.println("*** Bienvenido al Sistema de reservas de asientos ***");
+        System.out.println("*** BIENVENIDO AL SISTEMA DE RESERVAS DE ASIENTOS ***");
         elegir();
     }
 
@@ -44,9 +44,21 @@ public class SistemaDeAsientos {
     }
 
     public void mostrarAsientos() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                System.out.print(mapa[i][j] + " ");
+        for (int i = 0; i <= 10; i++) {
+            if (i > 0) {
+                System.out.print(i + " ");
+            }
+
+            for (int j = 0; j <= 10; j++) {
+                if (i == 0 && j < 10) {
+                    if (j == 0) {
+                        System.out.print(" ");
+                    }
+                    System.out.print(" " + (j + 1) );
+                }
+                if (j > 0 && i > 0) {
+                    System.out.print(mapa[i-1][j-1] + " ");
+                }
             }
             System.out.println();
         }
