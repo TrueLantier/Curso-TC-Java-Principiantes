@@ -22,5 +22,7 @@ public class Pruebas {
         };
 
         System.out.println(matrizTemas.length);
+        String[] matriz = new String[2];
+        System.out.println(matriz[0]);
     }
 }

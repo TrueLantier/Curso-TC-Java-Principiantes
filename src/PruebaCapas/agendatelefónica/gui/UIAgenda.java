@@ -1,4 +1,5 @@
 package PruebaCapas.agendatelefónica.gui;
+import PruebaCapas.agendatelefónica.lógica.*;
 import net.miginfocom.swing.MigLayout;
 import com.formdev.flatlaf.*;
 import com.formdev.flatlaf.themes.*;
@@ -10,16 +11,17 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * ¿Qué hace pack()?
- * ¿Por qué no puedo cambiar el título?
+ * ¿Por qué el JTextField se inicializa así?
  */
 
 public class UIAgenda implements ActionListener{
+    private int index = 0;
     private final JFrame frame;
     private JPanel mainPanel;
     private JLabel labelCI, labelNombre, labelApellido, labelFecha, labelTeléfono, labelDirección, labelÍndice,
     labelLíneaDivisoria, labelImagenUno, labelImagenDos, labelImagenTres, labelFondo;
     private JTextField textCI, textNombre, textApellido, textFecha, textTeléfono, textDirección, textÍndice;
+    private JTextField[] textArray;
     private JButton buttonGuardar, buttonSiguiente, buttonAnterior;
     private JMenuBar menuBar;
     private JMenu menuTema, menuFondo;
@@ -41,13 +43,13 @@ public class UIAgenda implements ActionListener{
     private JMenuItem[] temas = new JMenuItem[matrizTemas.length];
 
     private String[][] matrizFondos = {
-            { "Predeterminado", "Perros.jpg"},
+            { "Predeterminado", "Ciudad.jpg"},
             { "Mar", "Mar.jpg"},
             { "Fitness Mujer", "Fitness Mujer.jpg"},
             { "Fitness Hombre", "Fitness Hombre.jpg"},
             { "Atardecer", "Atardecer.jpg"},
             { "Río", "Río.jpg"},
-            { "Ciudad", "Ciudad.jpg"}
+            { "Perros", "Perros.jpg"}
     };
     private JMenuItem[] fondos = new JMenuItem[matrizFondos.length];
     private final String rutaFondos = "src/PruebaCapas/resources/images/";
@@ -131,10 +133,15 @@ public class UIAgenda implements ActionListener{
         textFecha = new JTextField(20);
         textÍndice = new JTextField(10);
         textÍndice.setEditable(false);
+        textÍndice.setText(String.valueOf(index));
+        textArray = new JTextField[]{textCI, textNombre, textApellido, textDirección, textTeléfono, textFecha};
 
         buttonAnterior = new JButton("<<");
+        buttonAnterior.addActionListener(this);
         buttonGuardar = new JButton("Guardar");
+        buttonGuardar.addActionListener(this);
         buttonSiguiente = new JButton(">>");
+        buttonSiguiente.addActionListener(this);
 
         JPanel fila3 = new JPanel(new MigLayout("insets 0, gap 10, wrap 4"));
         fila3.add(buttonAnterior, "gapleft 140");
@@ -148,15 +155,15 @@ public class UIAgenda implements ActionListener{
 
         mainPanel.add(labelCI, "align right");
         mainPanel.add(textCI);
-        mainPanel.add(labelDirección);
+        mainPanel.add(labelDirección, "align right");
         mainPanel.add(textDirección);
         mainPanel.add(labelNombre, "align right");
         mainPanel.add(textNombre);
-        mainPanel.add(labelTeléfono);
+        mainPanel.add(labelTeléfono, "align right");
         mainPanel.add(textTeléfono);
         mainPanel.add(labelApellido, "align right");
         mainPanel.add(textApellido);
-        mainPanel.add(labelFecha);
+        mainPanel.add(labelFecha, "align right");
         mainPanel.add(textFecha);
         //mainPanel.add(new JSeparator(), "growx, span, wrap");
         mainPanel.add(fila3, "span, gap 0 0 10 10");
@@ -170,22 +177,14 @@ public class UIAgenda implements ActionListener{
         mainPanel.setOpaque(false);
         //mainPanel.setBackground(new Color(0, 0, 0));
 
-        /**
-         * FUNCIONA
-         * ImageIcon imagenA = new ImageIcon("src/PruebaCapas/resources/images/2084239.png");
-         * labelFondo = new JLabel(imagenA);
-         * labelFondo.setLayout(new MigLayout("insets 0, fill"));
-         * labelFondo.add(mainPanel);
-         * frame.setContentPane(labelFondo);
-         */
-
-        imagenAntes = new ImageIcon("src/PruebaCapas/resources/images/Perros.jpg");
+        imagenAntes = new ImageIcon("src/PruebaCapas/resources/images/Ciudad.jpg");
         imagenEscalada = imagenAntes.getImage().getScaledInstance(550, 350, Image.SCALE_SMOOTH);
         imagenDespués = new ImageIcon(imagenEscalada);
         labelFondo = new JLabel(imagenDespués);
         labelFondo.setLayout(new MigLayout("insets 0, fill"));
         labelFondo.add(mainPanel);
         frame.setContentPane(labelFondo);
+        aplicarColores();
 
         //frame.setContentPane(mainPanel);
     }
@@ -206,7 +205,7 @@ public class UIAgenda implements ActionListener{
                 try {
                     UIManager.setLookAndFeel(matrizTemas[i][1]);
                     SwingUtilities.updateComponentTreeUI(frame);
-                    //frame.pack(); // Qué hace exactamente?
+                    aplicarColores();
                 }   catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -223,10 +222,53 @@ public class UIAgenda implements ActionListener{
             }
         }
 
-//        if (ae.getActionCommand().equals("Mar")) {
-//            labelFondo.setText("");
-//            textÍndice.setText("Funciona");
-//        }
+        if (ae.getActionCommand().equals("Guardar")) {
+            UsarDatos.guardarDatos(textArray, index);
+
+        }
+
+        if (ae.getActionCommand().equals("<<")) {
+            if (index > 0) {
+                --index;
+                textÍndice.setText(String.valueOf(index));
+            }
+            UsarDatos.limpiarDatos(textArray);
+
+            if (Vectores.guardados[index]) {
+                UsarDatos.mostrarDatos(textArray, index);
+            }
+        }
+
+        if (ae.getActionCommand().equals(">>")) {
+            if (index < 9) {
+                ++index;
+                textÍndice.setText(String.valueOf(index));
+            }
+            UsarDatos.limpiarDatos(textArray);
+
+            if (Vectores.guardados[index]) {
+                UsarDatos.mostrarDatos(textArray, index);
+            }
+        }
+    }
+
+    private void aplicarColores() {
+        Color color = Color.BLACK;
+        labelCI.setForeground(color);
+        labelNombre.setForeground(color);
+        labelApellido.setForeground(color);
+        labelDirección.setForeground(color);
+        labelTeléfono.setForeground(color);
+        labelFecha.setForeground(color);
+        labelÍndice.setForeground(color);
+    }
+
+    void guardarDatos() {
+
+    }
+
+    void mostrarDatos() {
+
     }
 }
 
@@ -256,7 +298,7 @@ labelTeléfono  = new JLabel("<html><font color='#000000'>Teléfono :</font></ht
 labelFecha     = new JLabel("<html><font color='#000000'>F. Nac :</font></html>");
 labelÍndice    = new JLabel("<html><font color='#000000'>Índice :</font></html>");
 
-private void applyLabelColors() {
+private void aplicarColores() {
     Color color = Color.BLACK;
     labelCI.setForeground(color);
     labelNombre.setForeground(color);
