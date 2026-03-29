@@ -11,18 +11,6 @@ import javax.swing.*;
 
 public class Pruebas {
     static void main() {
-        String[][] matrizTemas = {
-                {"FlatLaf Light",        FlatLightLaf.class.getName()},
-                {"FlatLaf Dark",         FlatDarkLaf.class.getName()},
-                {"FlatLaf IntelliJ",     FlatIntelliJLaf.class.getName()},
-                {"FlatLaf Darcula",      FlatDarculaLaf.class.getName()},
-                {"FlatMacLight",         FlatMacLightLaf.class.getName()},
-                {"FlatMacDark",          FlatMacDarkLaf.class.getName()},
-                {"System (Swing)",       UIManager.getSystemLookAndFeelClassName()}
-        };
-
-        System.out.println(matrizTemas.length);
-        String[] matriz = new String[2];
-        System.out.println(matriz[0]);
+        System.out.println(4 + "" + 2);
     }
 }

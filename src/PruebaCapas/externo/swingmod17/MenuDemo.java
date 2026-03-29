@@ -1,4 +1,4 @@
-package PruebaCapas.fundamentosjava.swingmod17;
+package PruebaCapas.externo.swingmod17;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
