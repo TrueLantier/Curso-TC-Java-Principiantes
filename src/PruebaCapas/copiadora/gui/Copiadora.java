@@ -1,4 +1,4 @@
-package PruebaCapas.gui;
+package PruebaCapas.copiadora.gui;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;

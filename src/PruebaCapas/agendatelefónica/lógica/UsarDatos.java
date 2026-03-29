@@ -27,4 +27,14 @@ public class UsarDatos {
             texto.setText("");
         }
     }
+
+    public static boolean comprobarDatos(JTextField[] textos) {
+        for (JTextField texto: textos) {
+            if (texto.getText().isEmpty()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

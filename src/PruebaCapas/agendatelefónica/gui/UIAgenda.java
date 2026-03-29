@@ -24,7 +24,8 @@ public class UIAgenda implements ActionListener{
     private JTextField[] textArray;
     private JButton buttonGuardar, buttonSiguiente, buttonAnterior;
     private JMenuBar menuBar;
-    private JMenu menuTema, menuFondo;
+    private JMenu menuTema, menuFondo, menuOtros;
+    private JMenuItem menuCreador, menuSalir;
     ImageIcon imagenAntes, imagenDespués;
     Image imagenEscalada;
 
@@ -78,7 +79,6 @@ public class UIAgenda implements ActionListener{
         frame.setJMenuBar(menuBar);
 
         menuTema = new JMenu("Temas");
-
         ImageIcon imagenTemas = new ImageIcon("src/PruebaCapas/resources/images/icono1.jpeg");
         Image imageEscaladaTemas = imagenTemas.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         imagenTemas = new ImageIcon(imageEscaladaTemas);
@@ -91,16 +91,29 @@ public class UIAgenda implements ActionListener{
         }
 
         menuFondo = new JMenu("Fondos");
+        ImageIcon imagenFondo = new ImageIcon("src/PruebaCapas/resources/images/equip.png");
+        Image imageEscaladaFondo = imagenFondo.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        imagenFondo = new ImageIcon(imageEscaladaFondo);
+        menuFondo.setIcon(imagenFondo);
+
         for (int i = 0; i < matrizFondos.length; i++) {
             fondos[i] = new JMenuItem(matrizFondos[i][0]);
             menuFondo.add(fondos[i]);
             fondos[i].addActionListener(this);
         }
 
-        ImageIcon imagenFondo = new ImageIcon("src/PruebaCapas/resources/images/equip.png");
-        Image imageEscaladaFondo = imagenFondo.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-        imagenFondo = new ImageIcon(imageEscaladaFondo);
-        menuFondo.setIcon(imagenFondo);
+        menuOtros = new JMenu("Otros");
+        menuCreador = new JMenuItem("El Creador");
+        menuSalir = new JMenuItem("Salir");
+
+        menuOtros.add(menuCreador);
+        menuCreador.addActionListener(this);
+        menuOtros.add(menuSalir);
+        menuSalir.addActionListener(this);
+
+        menuBar.add(menuTema);
+        menuBar.add(menuFondo);
+        menuBar.add(menuOtros);
 
         labelCI = new JLabel("CI :");
         labelNombre = new JLabel("Nombre :");
@@ -149,9 +162,6 @@ public class UIAgenda implements ActionListener{
         fila3.add(buttonSiguiente);
         fila3.setOpaque(false);
         //fila3.setBackground(new Color(0, 0, 0));
-
-        menuBar.add(menuTema);
-        menuBar.add(menuFondo);
 
         mainPanel.add(labelCI, "align right");
         mainPanel.add(textCI);
@@ -223,8 +233,11 @@ public class UIAgenda implements ActionListener{
         }
 
         if (ae.getActionCommand().equals("Guardar")) {
+            if (UsarDatos.comprobarDatos(textArray)) {
+                JOptionPane.showMessageDialog(null, "Hay campos vacíos.");
+                return;
+            }
             UsarDatos.guardarDatos(textArray, index);
-
         }
 
         if (ae.getActionCommand().equals("<<")) {
@@ -250,6 +263,15 @@ public class UIAgenda implements ActionListener{
                 UsarDatos.mostrarDatos(textArray, index);
             }
         }
+
+        if (ae.getActionCommand().equals("El Creador")) {
+            JOptionPane.showMessageDialog(null, "Desarrollado por" +
+                    " Angel Eduardo Pedraza Ordoñez.");
+
+        }
+        if (ae.getActionCommand().equals("Salir")) {
+            System.exit(0);
+        }
     }
 
     private void aplicarColores() {
@@ -261,14 +283,6 @@ public class UIAgenda implements ActionListener{
         labelTeléfono.setForeground(color);
         labelFecha.setForeground(color);
         labelÍndice.setForeground(color);
-    }
-
-    void guardarDatos() {
-
-    }
-
-    void mostrarDatos() {
-
     }
 }
 
@@ -297,28 +311,4 @@ labelDirección = new JLabel("<html><font color='#000000'>Dirección :</font></h
 labelTeléfono  = new JLabel("<html><font color='#000000'>Teléfono :</font></html>");
 labelFecha     = new JLabel("<html><font color='#000000'>F. Nac :</font></html>");
 labelÍndice    = new JLabel("<html><font color='#000000'>Índice :</font></html>");
-
-private void aplicarColores() {
-    Color color = Color.BLACK;
-    labelCI.setForeground(color);
-    labelNombre.setForeground(color);
-    labelApellido.setForeground(color);
-    labelDirección.setForeground(color);
-    labelTeléfono.setForeground(color);
-    labelFecha.setForeground(color);
-    labelÍndice.setForeground(color);
-}
-
-for (int i = 0; i < matrizTemas.length; i++) {
-    if (ae.getActionCommand().equals(matrizTemas[i][0])) {
-        try {
-            UIManager.setLookAndFeel(matrizTemas[i][1]);
-            SwingUtilities.updateComponentTreeUI(frame);
-            applyLabelColors(); // aquí
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return;
-    }
-}
  */
