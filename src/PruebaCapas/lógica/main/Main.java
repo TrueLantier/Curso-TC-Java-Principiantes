@@ -7,7 +7,7 @@ import com.formdev.flatlaf.themes.*;
 import javax.swing.*;
 
 public class Main {
-    static void main() {
+    public static void main() {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {

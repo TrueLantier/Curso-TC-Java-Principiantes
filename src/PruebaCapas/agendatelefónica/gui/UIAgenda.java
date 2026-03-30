@@ -1,5 +1,6 @@
 package PruebaCapas.agendatelefónica.gui;
 import PruebaCapas.agendatelefónica.lógica.*;
+import PruebaCapas.lógica.main.Main;
 import net.miginfocom.swing.MigLayout;
 import com.formdev.flatlaf.*;
 import com.formdev.flatlaf.themes.*;
