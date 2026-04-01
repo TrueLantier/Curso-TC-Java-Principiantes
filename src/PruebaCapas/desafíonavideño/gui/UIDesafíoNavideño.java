@@ -41,8 +41,8 @@ public class UIDesafíoNavideño implements ActionListener {
         menuBar = new JMenuBar();
         frame.setJMenuBar(menuBar);
         panelButton = new JPanel(new MigLayout("insets 0, gap 40"));
-        //mainPanel = new JPanel(new MigLayout("insets 20, gap 10" ));
-        mainPanel = new JPanel(new MigLayout("debug, insets 20, gap 10, wrap 1"));
+        mainPanel = new JPanel(new MigLayout("insets 20, gap 10, wrap 1" ));
+        //mainPanel = new JPanel(new MigLayout("debug, insets 20, gap 10, wrap 1"));
         // "fill" para que los componentes usen el espacio sobrante.
 
         labelCartel = new JLabel("Adivinanzas");

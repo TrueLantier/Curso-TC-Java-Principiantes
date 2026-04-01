@@ -30,14 +30,18 @@ public class PanelTextArea extends JPanel{
         labelResultado = new JLabel("Resultado");
 
         textElegido = new JTextField(10);
-        textElegido = new JTextField(10);
-        textElegido = new JTextField(10);
-        textElegido = new JTextField(10);
+        textCantidad = new JTextField(10);
+        textEncontrados = new JTextField(10);
+        textResultado = new JTextField(10);
 
         panelDatos.add(labelElegido);
+        panelDatos.add(textElegido);
         panelDatos.add(labelCantidad);
+        panelDatos.add(textCantidad);
         panelDatos.add(labelEncontrados);
+        panelDatos.add(textEncontrados);
         panelDatos.add(labelResultado);
+        panelDatos.add(textResultado);
 
 
         add(scrollPane);
