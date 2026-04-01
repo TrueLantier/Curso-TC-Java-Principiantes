@@ -13,7 +13,8 @@ public class Main {
             public void run() {
                 try {
                     //JFrame.setDefaultLookAndFeelDecorated(true);
-                    UIManager.setLookAndFeel(new FlatMacDarkLaf());
+                    //UIManager.setLookAndFeel(new FlatMacDarkLaf());
+                    UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
                     //new UIAgenda();
                     //new Copiadora();
                     new UIDesafíoNavideño();

@@ -18,7 +18,6 @@ public class MenuDemo implements ActionListener{
     JButton btnUno, btnDos;
 
     MenuDemo() throws Exception{
-        UIManager.setLookAndFeel(new FlatMacDarkLaf());
         JFrame jFrame = new JFrame("JMenú Demo");
         jFrame.setLayout(new FlowLayout());
         jFrame.setSize(600, 600);
@@ -31,6 +30,9 @@ public class MenuDemo implements ActionListener{
         Image imagenEscalada = imagen.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
         ImageIcon imagenUno = new ImageIcon(imagenEscalada);
         btnUno = new JButton(imagenUno);
+        btnUno.setFocusPainted(false); // Para que no salga cuando se marca.
+        //btnUno.setBorderPainted(true); // Ni idea.
+        btnUno.setContentAreaFilled(false); // Para quitar el interior no relevante del botón.
         labelUno = new JLabel(imagenUno);
         labelTextoUno = new JLabel("Coca-Cola", imagenUno, SwingConstants.CENTER);
 
@@ -88,6 +90,7 @@ public class MenuDemo implements ActionListener{
             @Override
             public void run() {
                 try {
+                    UIManager.setLookAndFeel(new FlatMacDarkLaf());
                     new MenuDemo();
                 } catch (Exception e) {
                     throw new RuntimeException(e);
