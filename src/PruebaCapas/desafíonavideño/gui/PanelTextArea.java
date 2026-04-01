@@ -24,23 +24,23 @@ public class PanelTextArea extends JPanel{
 
         JPanel panelDatos = new JPanel(new MigLayout("insets 0, gap 10, wrap 2"));
 
-        labelElegido = new JLabel("Elegido");
-        labelCantidad = new JLabel("Cantidad");
-        labelEncontrados = new JLabel("Encontrados");
-        labelResultado = new JLabel("Resultado");
+        labelElegido = new JLabel("Elegido: ");
+        labelCantidad = new JLabel("Cantidad: ");
+        labelEncontrados = new JLabel("Encontrados: ");
+        labelResultado = new JLabel("Resultado: ");
 
         textElegido = new JTextField(10);
         textCantidad = new JTextField(10);
         textEncontrados = new JTextField(10);
         textResultado = new JTextField(10);
 
-        panelDatos.add(labelElegido);
+        panelDatos.add(labelElegido, "align right");
         panelDatos.add(textElegido);
-        panelDatos.add(labelCantidad);
+        panelDatos.add(labelCantidad,"align right");
         panelDatos.add(textCantidad);
-        panelDatos.add(labelEncontrados);
+        panelDatos.add(labelEncontrados, "align right");
         panelDatos.add(textEncontrados);
-        panelDatos.add(labelResultado);
+        panelDatos.add(labelResultado,"align right");
         panelDatos.add(textResultado);
 
 

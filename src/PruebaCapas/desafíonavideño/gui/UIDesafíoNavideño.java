@@ -99,9 +99,8 @@ public class UIDesafíoNavideño implements ActionListener {
         mainPanel.add(new JSeparator(), "growx, span, wrap");
         mainPanel.add(new PanelButton(), "wrap");
         mainPanel.add(new JSeparator(), "growx, span, wrap");
-
         mainPanel.add(new PanelTextArea());
-        mainPanel.add(buttonReset);
+        mainPanel.add(buttonReset, "align center");
         frame.setContentPane(mainPanel);
     }
 
