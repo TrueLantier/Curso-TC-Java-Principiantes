@@ -10,14 +10,11 @@ import java.io.*;
 
 public class UIDesafíoNavideño implements ActionListener {
     private final JFrame frame;
-    private JPanel mainPanel, panelButton;
+    private JPanel mainPanel;
     private JMenuBar menuBar;
     private JLabel labelCartel, labelIngreso, labelElegir;
-    private JLabel labelElegido, labelCantidad, labelEncontrados, labelResultado;
-    private JButton buttonUno, buttonDos, buttonTres, buttonCuatro, buttonReset;
+    private JButton buttonReset;
     private JTextField textIngreso;
-    private JTextArea textArea;
-    private JScrollPane scrollPane;
     private JMenu menu;
     private JMenuItem menuItem;
     private ImageIcon iconImage;
@@ -40,7 +37,6 @@ public class UIDesafíoNavideño implements ActionListener {
     private void initComponents() {
         menuBar = new JMenuBar();
         frame.setJMenuBar(menuBar);
-        panelButton = new JPanel(new MigLayout("insets 0, gap 40"));
         mainPanel = new JPanel(new MigLayout("insets 20, gap 10, wrap 1" ));
         //mainPanel = new JPanel(new MigLayout("debug, insets 20, gap 10, wrap 1"));
         // "fill" para que los componentes usen el espacio sobrante.
@@ -58,54 +54,21 @@ public class UIDesafíoNavideño implements ActionListener {
         textIngreso.setActionCommand("Ingreso");
         textIngreso.addActionListener(this);
 
-        iconImage = ponerFoto(rutaFotos[0], 40);
-        buttonUno = new JButton(iconImage);
-        buttonUno.addActionListener(this);
-
-        iconImage = ponerFoto(rutaFotos[1], 40);
-        buttonDos = new JButton(iconImage);
-        buttonDos.addActionListener(this);
-
-        iconImage = ponerFoto(rutaFotos[2], 40);
-        buttonTres = new JButton(iconImage);
-        buttonTres.addActionListener(this);
-
-        iconImage = ponerFoto(rutaFotos[3], 40);
-        buttonCuatro = new JButton(iconImage);
-        buttonCuatro.addActionListener(this);
-
         buttonReset = new JButton("Reset");
         buttonReset.setFont(new Font("JetBrains Mono", Font.BOLD, 14));
-
-        panelButton.add(buttonUno, "gapleft 90");
-        panelButton.add(buttonDos);
-        panelButton.add(buttonTres);
-        panelButton.add(buttonCuatro);
-
-        textArea = new JTextArea(10, 35);
-        textArea.setLineWrap(true); // Salta de línea al llegar al final
-        textArea.setWrapStyleWord(true); // Corta solo espacios entre palabras.
-        //textArea.setEditable(false);
-        textArea.setFont(new Font("JetBrains Mono", 1, 14));
-        textArea.setForeground(Color.MAGENTA);
-        scrollPane = new JScrollPane(textArea);
 
         mainPanel.add(labelCartel, "gapleft 30%");
         mainPanel.add(labelIngreso, "gapleft 30");
         mainPanel.add(textIngreso, "align center");
         mainPanel.add(labelElegir, "align center");
-        mainPanel.add(new JSeparator(), "growx, span, wrap");
-        mainPanel.add(panelButton, "wrap");
-        mainPanel.add(new JSeparator(), "growx, span, wrap");
-        mainPanel.add(new PanelButton(), "wrap");
-        mainPanel.add(new JSeparator(), "growx, span, wrap");
+        mainPanel.add(new PanelButton(), "growx, span, wrap");
         mainPanel.add(new PanelTextArea());
         mainPanel.add(buttonReset, "align center");
         frame.setContentPane(mainPanel);
     }
 
     private void setupFrame() {
-        frame.setSize(600, 700);
+        frame.setSize(600, 660);
         // 1frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -122,8 +85,7 @@ public class UIDesafíoNavideño implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("Ingreso")) {
-            textArea.setText("Angel");
-            textIngreso.setText("Eduardo");
+            textIngreso.setText("Angel");
         }
     }
 }

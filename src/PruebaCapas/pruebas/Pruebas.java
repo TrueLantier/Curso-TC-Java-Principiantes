@@ -13,7 +13,6 @@ import javax.swing.*;
 
 public class Pruebas {
     static void main() {
-        System.out.println(4 + "" + 2 + "\uD83D\uDE00");
 
     }
 }
