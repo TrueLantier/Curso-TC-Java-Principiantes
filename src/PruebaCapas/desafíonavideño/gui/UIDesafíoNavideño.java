@@ -84,7 +84,7 @@ public class UIDesafíoNavideño implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("Ingreso")) {
             textIngreso.setText("Angel");
-            panelTextArea.getTextArea().setText(al.sopaOnePiece);
+            panelTextArea.getTextArea().setText(al.sopaOPUno);
         }
 
         if (ae.getActionCommand().equals("Luffy")) {

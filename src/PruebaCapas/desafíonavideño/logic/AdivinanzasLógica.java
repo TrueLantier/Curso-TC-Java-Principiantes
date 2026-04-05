@@ -5,8 +5,23 @@ import PruebaCapas.desafíonavideño.gui.UIDesafíoNavideño;
 import javax.swing.*;
 
 public class AdivinanzasLógica {
+    public String sopaSSUno =
+            "DREAMBFGJKVWXYZSCQTO\n" +
+                    "BVWXYZKJGFNQTOBPRKNV\n" +
+                    "SPELLBVWXYZEQTOEEFEG\n" +
+                    "BVWXYZKJGFDQPTOLABPV\n" +
+                    "BVWXYLLEPSRQKHGLTFHB\n" +
+                    "BVWXYZKJGFEQTOIBUVIK\n" +
+                    "NEPHISBVWXAYZKJSRGSF\n" +
+                    "BVWXYDZKJGMFQTOBEVWX\n" +
+                    "BVWXYZRKJGFQTOBVWXYZ\n" +
+                    "SBVWXYZEKNEPHISBVWXY\n" +
+                    "BPVWXYZKAJGFQTOBVWXY\n" +
+                    "CREATUREBMVWXYZKJGFQ\n" +
+                    "BVWLXYZKJGFQTOBVWXYZ\n" +
+                    "BVWXLYZKJGFQTOBVWXYZ";
 
-    public String sopaOnePiece =
+    public String sopaOPUno =
             "SUNNYBCDEFGHJKSLMPQR\n" +
                     "HAKIVWXZTOPQRUBUCDEF\n" +
                     "GBCDELUFFYPQNMOFRSTV\n" +
