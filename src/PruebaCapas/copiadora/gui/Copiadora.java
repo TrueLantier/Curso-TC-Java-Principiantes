@@ -34,6 +34,8 @@ public class Copiadora implements ActionListener {
         system.setActionCommand("System");
         system.addActionListener(this);
         nimbus = new JMenuItem("LaF Nimbus");
+        nimbus.setActionCommand("Nimbus");
+        nimbus.addActionListener(this);
         temas.add(system);
         temas.add(nimbus);
         menuBar.add(temas);
@@ -100,6 +102,13 @@ public class Copiadora implements ActionListener {
             if (ae.getActionCommand().equals("System")) {
                 textUno.setText("Funciona");
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                SwingUtilities.updateComponentTreeUI(frame);
+                frame.pack();
+            }
+
+            if (ae.getActionCommand().equals("Nimbus")) {
+                textUno.setText("Funciona");
+                UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
                 SwingUtilities.updateComponentTreeUI(frame);
                 frame.pack();
             }

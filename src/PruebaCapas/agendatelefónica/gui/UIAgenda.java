@@ -74,8 +74,8 @@ public class UIAgenda implements ActionListener{
 //                g.drawImage(imagenF, 0, 0, getWidth(), getHeight(), this);
 //            }
 //        };
-        //mainPanel = new JPanel(new MigLayout("insets 20, gap 10, wrap 4" ));
-        mainPanel = new JPanel(new MigLayout("debug, insets 20, gap 10, wrap 4" ));
+        mainPanel = new JPanel(new MigLayout("insets 20, gap 10, wrap 4" ));
+        //mainPanel = new JPanel(new MigLayout("debug, insets 20, gap 10, wrap 4" ));
 
         menuBar = new JMenuBar();
         frame.setJMenuBar(menuBar);

@@ -1,5 +1,6 @@
 package PruebaCapas.desafíonavideño.gui;
 
+import PruebaCapas.desafíonavideño.logic.AdivinanzasLógica;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -11,23 +12,17 @@ import java.io.*;
 public class UIDesafíoNavideño implements ActionListener {
     private final JFrame frame;
     private JPanel mainPanel;
+    private PanelButton panelButton;
+    private PanelTextArea panelTextArea;
     private JMenuBar menuBar;
     private JLabel labelCartel, labelIngreso, labelElegir;
-    private JButton buttonReset;
+    private JButton buttonComprobar, buttonReset;
     private JTextField textIngreso;
     private JMenu menu;
     private JMenuItem menuItem;
-    private ImageIcon iconImage;
-    private Image imageUno, imageDos, imageTres, imageCuatro;
-    private String[] rutaFotos = {
-            "src/PruebaCapas/resources/images/straw-hat.png",
-            "src/PruebaCapas/resources/images/jolly-roger.png",
-            "src/PruebaCapas/resources/images/thousand-sunny.png",
-            "src/PruebaCapas/resources/images/haki.png",
-            ""
-    };
+    private AdivinanzasLógica al = new AdivinanzasLógica();
 
-    public UIDesafíoNavideño() throws IOException {
+    public UIDesafíoNavideño() {
         frame = new JFrame("Juego");
 
         initComponents();
@@ -54,25 +49,48 @@ public class UIDesafíoNavideño implements ActionListener {
         textIngreso.setActionCommand("Ingreso");
         textIngreso.addActionListener(this);
 
+        buttonComprobar = new JButton("Comprobar");
+        buttonComprobar.setFont(new Font("JetBrains Mono", Font.BOLD, 14));
+        buttonComprobar.addActionListener(this);
+
         buttonReset = new JButton("Reset");
         buttonReset.setFont(new Font("JetBrains Mono", Font.BOLD, 14));
+        buttonReset.addActionListener(this);
+
+        panelButton = new PanelButton(this);
+        panelTextArea = new PanelTextArea();
 
         mainPanel.add(labelCartel, "gapleft 30%");
         mainPanel.add(labelIngreso, "gapleft 30");
         mainPanel.add(textIngreso, "align center");
         mainPanel.add(labelElegir, "align center");
-        mainPanel.add(new PanelButton(), "growx, span, wrap");
-        mainPanel.add(new PanelTextArea());
+        mainPanel.add(panelButton, "growx, span, wrap");
+        mainPanel.add(buttonComprobar, "align center");
+        mainPanel.add(panelTextArea);
         mainPanel.add(buttonReset, "align center");
         frame.setContentPane(mainPanel);
     }
 
     private void setupFrame() {
-        frame.setSize(600, 660);
-        // 1frame.setResizable(false);
+        frame.setSize(600, 700);
+        // frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getActionCommand().equals("Ingreso")) {
+            textIngreso.setText("Angel");
+            panelTextArea.getTextArea().setText(al.sopaOnePiece);
+        }
+
+        if (ae.getActionCommand().equals("Luffy")) {
+            panelButton.getButtonCinco().setText("Luffy");
+        }
+
     }
 
     private ImageIcon ponerFoto(String ruta, int tamaño) {
@@ -82,10 +100,110 @@ public class UIDesafíoNavideño implements ActionListener {
         return icon;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getActionCommand().equals("Ingreso")) {
-            textIngreso.setText("Angel");
-        }
+    private JLabel generarLabel(String nombre) {
+        JLabel label = new JLabel(nombre);
+        label.setFont(new Font("JetBrains Mono", Font.BOLD, 14));
+
+        return label;
+    }
+
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public void setMainPanel(JPanel mainPanel) {
+        this.mainPanel = mainPanel;
+    }
+
+    public PanelButton getPanelButton() {
+        return panelButton;
+    }
+
+    public void setPanelButton(PanelButton panelButton) {
+        this.panelButton = panelButton;
+    }
+
+    public PanelTextArea getPanelTextArea() {
+        return panelTextArea;
+    }
+
+    public void setPanelTextArea(PanelTextArea panelTextArea) {
+        this.panelTextArea = panelTextArea;
+    }
+
+    public JMenuBar getMenuBar() {
+        return menuBar;
+    }
+
+    public void setMenuBar(JMenuBar menuBar) {
+        this.menuBar = menuBar;
+    }
+
+    public JLabel getLabelCartel() {
+        return labelCartel;
+    }
+
+    public void setLabelCartel(JLabel labelCartel) {
+        this.labelCartel = labelCartel;
+    }
+
+    public JLabel getLabelIngreso() {
+        return labelIngreso;
+    }
+
+    public void setLabelIngreso(JLabel labelIngreso) {
+        this.labelIngreso = labelIngreso;
+    }
+
+    public JLabel getLabelElegir() {
+        return labelElegir;
+    }
+
+    public void setLabelElegir(JLabel labelElegir) {
+        this.labelElegir = labelElegir;
+    }
+
+    public JButton getButtonComprobar() {
+        return buttonComprobar;
+    }
+
+    public void setButtonComprobar(JButton buttonComprobar) {
+        this.buttonComprobar = buttonComprobar;
+    }
+
+    public JButton getButtonReset() {
+        return buttonReset;
+    }
+
+    public void setButtonReset(JButton buttonReset) {
+        this.buttonReset = buttonReset;
+    }
+
+    public JTextField getTextIngreso() {
+        return textIngreso;
+    }
+
+    public void setTextIngreso(JTextField textIngreso) {
+        this.textIngreso = textIngreso;
+    }
+
+    public JMenu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(JMenu menu) {
+        this.menu = menu;
+    }
+
+    public JMenuItem getMenuItem() {
+        return menuItem;
+    }
+
+    public void setMenuItem(JMenuItem menuItem) {
+        this.menuItem = menuItem;
     }
 }

@@ -1,5 +1,6 @@
 package PruebaCapas.desafíonavideño.gui;
 
+import PruebaCapas.desafíonavideño.logic.AdivinanzasLógica;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -7,11 +8,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PanelButton extends JPanel implements ActionListener {
-    private JButton buttonUno, buttonDos, buttonTres, buttonCuatro, buttonCinco, buttonSeis, buttonSiete,
+public class PanelButton extends JPanel {
+    public JButton buttonUno, buttonDos, buttonTres, buttonCuatro, buttonCinco, buttonSeis, buttonSiete,
     buttonOcho;
-    private ImageIcon iconImage;
-    private String[] rutaFotos = {
+    public ImageIcon iconImage;
+    public AdivinanzasLógica al = new AdivinanzasLógica();
+    public String[] rutaFotos = {
             "src/PruebaCapas/resources/images/dream-realm.png",
             "src/PruebaCapas/resources/images/the-spell.png",
             "src/PruebaCapas/resources/images/nephis-saint.png",
@@ -23,40 +25,48 @@ public class PanelButton extends JPanel implements ActionListener {
             ""
     };
 
-    public PanelButton() {
+    public PanelButton(ActionListener principal) {
         setLayout(new MigLayout("insets 0, gap 40 10 10 10, fillx"));
 
         iconImage = ponerFoto(rutaFotos[0], 40);
         buttonUno = new JButton(iconImage);
-        buttonUno.addActionListener(this);
+        buttonUno.setActionCommand("Dream Realm");
+        buttonUno.addActionListener(principal);
 
         iconImage = ponerFoto(rutaFotos[1], 40);
         buttonDos = new JButton(iconImage);
-        buttonDos.addActionListener(this);
+        buttonDos.setActionCommand("Nightmare Spell");
+        buttonDos.addActionListener(principal);
 
         iconImage = ponerFoto(rutaFotos[2], 40);
         buttonTres = new JButton(iconImage);
-        buttonTres.addActionListener(this);
+        buttonTres.setActionCommand("Nephis");
+        buttonTres.addActionListener(principal);
 
         iconImage = ponerFoto(rutaFotos[3], 40);
         buttonCuatro = new JButton(iconImage);
-        buttonCuatro.addActionListener(this);
+        buttonCuatro.setActionCommand("Nightmare Creature");
+        buttonCuatro.addActionListener(principal);
 
         iconImage = ponerFoto(rutaFotos[4], 40);
         buttonCinco = new JButton(iconImage);
-        buttonCinco.addActionListener(this);
+        buttonCinco.setActionCommand("Luffy");
+        buttonCinco.addActionListener(principal);
 
         iconImage = ponerFoto(rutaFotos[5], 40);
         buttonSeis = new JButton(iconImage);
-        buttonSeis.addActionListener(this);
+        buttonSeis.setActionCommand("Mugiwara");
+        buttonSeis.addActionListener(principal);
 
         iconImage = ponerFoto(rutaFotos[6], 40);
         buttonSiete = new JButton(iconImage);
-        buttonSiete.addActionListener(this);
+        buttonSiete.setActionCommand("Sunny");
+        buttonSiete.addActionListener(principal);
 
         iconImage = ponerFoto(rutaFotos[7], 40);
         buttonOcho = new JButton(iconImage);
-        buttonOcho.addActionListener(this);
+        buttonOcho.setActionCommand("Haki");
+        buttonOcho.addActionListener(principal);
 
         add(new JSeparator(), "growx, span, wrap");
 
@@ -82,8 +92,74 @@ public class PanelButton extends JPanel implements ActionListener {
         return icon;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
+//    @Override
+//    public void actionPerformed(ActionEvent ae) {
+//        if (al.pulsarBotónÍcono(ae.getActionCommand())) {
+//            buttonCinco.setText("Luffy");
+//        }
+//    }
 
+    public JButton getButtonUno() {
+        return buttonUno;
+    }
+
+    public void setButtonUno(JButton buttonUno) {
+        this.buttonUno = buttonUno;
+    }
+
+    public JButton getButtonDos() {
+        return buttonDos;
+    }
+
+    public void setButtonDos(JButton buttonDos) {
+        this.buttonDos = buttonDos;
+    }
+
+    public JButton getButtonTres() {
+        return buttonTres;
+    }
+
+    public void setButtonTres(JButton buttonTres) {
+        this.buttonTres = buttonTres;
+    }
+
+    public JButton getButtonCuatro() {
+        return buttonCuatro;
+    }
+
+    public void setButtonCuatro(JButton buttonCuatro) {
+        this.buttonCuatro = buttonCuatro;
+    }
+
+    public JButton getButtonCinco() {
+        return buttonCinco;
+    }
+
+    public void setButtonCinco(JButton buttonCinco) {
+        this.buttonCinco = buttonCinco;
+    }
+
+    public JButton getButtonSeis() {
+        return buttonSeis;
+    }
+
+    public void setButtonSeis(JButton buttonSeis) {
+        this.buttonSeis = buttonSeis;
+    }
+
+    public JButton getButtonSiete() {
+        return buttonSiete;
+    }
+
+    public void setButtonSiete(JButton buttonSiete) {
+        this.buttonSiete = buttonSiete;
+    }
+
+    public JButton getButtonOcho() {
+        return buttonOcho;
+    }
+
+    public void setButtonOcho(JButton buttonOcho) {
+        this.buttonOcho = buttonOcho;
     }
 }
