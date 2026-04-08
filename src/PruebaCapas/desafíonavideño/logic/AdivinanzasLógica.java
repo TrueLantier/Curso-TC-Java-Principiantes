@@ -54,7 +54,55 @@ public class AdivinanzasLógica {
 
     private final String[] ONEPIECE = {"Luffy", "Mugiwara", "Sunny", "Haki"};
     private final String[] SHADOWSLAVE = {"Dream", "Spell", "Nephis", "Creature"};
-    private String objeto;
+    private String objeto, tema;
+
+    public String getTema() {
+        return tema;
+    }
+
+    public void setTema(String tema) {
+        this.tema = tema;
+    }
+
+    public String getObjeto() {
+        return objeto;
+    }
+
+    public void setObjeto(String objeto) {
+        this.objeto = objeto;
+    }
+
+    public String[] getSHADOWSLAVE() {
+        return SHADOWSLAVE;
+    }
+
+    public String[] getONEPIECE() {
+        return ONEPIECE;
+    }
+
+    public String getSopa() {
+        return sopa;
+    }
+
+    public void setSopa(String sopa) {
+        this.sopa = sopa;
+    }
+
+    public String getSopaOPUno() {
+        return sopaOPUno;
+    }
+
+    public void setSopaOPUno(String sopaOPUno) {
+        this.sopaOPUno = sopaOPUno;
+    }
+
+    public String getSopaSSUno() {
+        return sopaSSUno;
+    }
+
+    public void setSopaSSUno(String sopaSSUno) {
+        this.sopaSSUno = sopaSSUno;
+    }
 
     public void setLabel(JLabel label) {
         for (String palabra: ONEPIECE) {
@@ -74,13 +122,14 @@ public class AdivinanzasLógica {
     public boolean pulsarBotónÍcono(String botón) {
         for (String palabra: ONEPIECE) {
             if (palabra.equals(botón)) {
+                tema = "One Piece";
                 objeto = botón;
-                //setLabel(ui.getLabelElegir());
                 return true;
             }
         }
         for (String palabra: SHADOWSLAVE) {
             if (palabra.equals(botón)) {
+                tema = "Shadow Slave";
                 objeto = botón;
                 return true;
             }

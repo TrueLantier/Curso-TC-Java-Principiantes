@@ -24,7 +24,6 @@ public class UIDesafíoNavideño implements ActionListener {
 
     public UIDesafíoNavideño() {
         frame = new JFrame("Juego");
-
         initComponents();
         setupFrame();
     }
@@ -36,14 +35,9 @@ public class UIDesafíoNavideño implements ActionListener {
         //mainPanel = new JPanel(new MigLayout("debug, insets 20, gap 10, wrap 1"));
         // "fill" para que los componentes usen el espacio sobrante.
 
-        labelCartel = new JLabel("Adivinanzas");
-        labelCartel.setFont(new Font("JetBrains Mono", Font.BOLD, 28));
-
-        labelIngreso = new JLabel("Ingrese la cantidad de veces que cree que aparece el objeto.");
-        labelIngreso.setFont(new Font("JetBrains Mono", Font.BOLD, 14));
-
-        labelElegir = new JLabel("Elige el objeto: \uD83D\uDE00");
-        labelElegir.setFont(new Font("Segoe UI Emoji", Font.BOLD, 14));
+        labelCartel = generarLabel("Adivinanzas", 28);
+        labelIngreso = generarLabel("Ingrese la cantidad de veces que cree que aparece el objeto.", 14);
+        labelElegir = generarLabel("Elige el objeto: ", 14);
 
         textIngreso = new JTextField(10);
         textIngreso.setActionCommand("Ingreso");
@@ -86,8 +80,9 @@ public class UIDesafíoNavideño implements ActionListener {
             panelTextArea.getTextArea().setText(al.sopaOPUno);
         }
 
-        if (ae.getActionCommand().equals("Luffy")) {
-            panelButton.getButtonCinco().setText("Luffy");
+        if (al.pulsarBotónÍcono(ae.getActionCommand())) {
+            labelElegir.setText(al.getTema());
+            setLabelButton((JButton) ae.getSource());
         }
 
     }
@@ -99,10 +94,14 @@ public class UIDesafíoNavideño implements ActionListener {
         return icon;
     }
 
-    private JLabel generarLabel(String nombre) {
+    private JLabel generarLabel(String nombre, int tamañoFuente) {
         JLabel label = new JLabel(nombre);
-        label.setFont(new Font("JetBrains Mono", Font.BOLD, 14));
+        label.setFont(new Font("JetBrains Mono", Font.BOLD, tamañoFuente));
 
         return label;
+    }
+
+    private void setLabelButton(JButton button) {
+        button.setText(button.getActionCommand());
     }
 }

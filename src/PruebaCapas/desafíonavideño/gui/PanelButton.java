@@ -26,7 +26,7 @@ public class PanelButton extends JPanel {
     };
 
     public PanelButton(ActionListener principal) {
-        setLayout(new MigLayout("insets 0, gap 40 10 10 10, fillx"));
+        setLayout(new MigLayout("insets 0, gap 40 10 10 10"));
 
         iconImage = ponerFoto(rutaFotos[0], 40);
         buttonUno = new JButton(iconImage);
