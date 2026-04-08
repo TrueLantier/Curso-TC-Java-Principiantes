@@ -53,7 +53,7 @@ public class AdivinanzasLógica {
             "HIJKLMNOPQRSTUVWXYZA";
 
     private final String[] ONEPIECE = {"Luffy", "Mugiwara", "Sunny", "Haki"};
-    private final String[] SHADOWSLAVE = {"Dream Realm", "Nightmare Spell", "Nephis", "Nightmare Creature"};
+    private final String[] SHADOWSLAVE = {"Dream", "Spell", "Nephis", "Creature"};
     private String objeto;
 
     public void setLabel(JLabel label) {
@@ -86,5 +86,9 @@ public class AdivinanzasLógica {
             }
         }
         return false;
+    }
+
+    public void ponerNombreBotón(String nombre) {
+
     }
 }

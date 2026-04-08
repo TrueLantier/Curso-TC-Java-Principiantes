@@ -79,7 +79,6 @@ public class UIDesafíoNavideño implements ActionListener {
         frame.setVisible(true);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("Ingreso")) {
@@ -105,105 +104,5 @@ public class UIDesafíoNavideño implements ActionListener {
         label.setFont(new Font("JetBrains Mono", Font.BOLD, 14));
 
         return label;
-    }
-
-    public JFrame getFrame() {
-        return frame;
-    }
-
-    public JPanel getMainPanel() {
-        return mainPanel;
-    }
-
-    public void setMainPanel(JPanel mainPanel) {
-        this.mainPanel = mainPanel;
-    }
-
-    public PanelButton getPanelButton() {
-        return panelButton;
-    }
-
-    public void setPanelButton(PanelButton panelButton) {
-        this.panelButton = panelButton;
-    }
-
-    public PanelTextArea getPanelTextArea() {
-        return panelTextArea;
-    }
-
-    public void setPanelTextArea(PanelTextArea panelTextArea) {
-        this.panelTextArea = panelTextArea;
-    }
-
-    public JMenuBar getMenuBar() {
-        return menuBar;
-    }
-
-    public void setMenuBar(JMenuBar menuBar) {
-        this.menuBar = menuBar;
-    }
-
-    public JLabel getLabelCartel() {
-        return labelCartel;
-    }
-
-    public void setLabelCartel(JLabel labelCartel) {
-        this.labelCartel = labelCartel;
-    }
-
-    public JLabel getLabelIngreso() {
-        return labelIngreso;
-    }
-
-    public void setLabelIngreso(JLabel labelIngreso) {
-        this.labelIngreso = labelIngreso;
-    }
-
-    public JLabel getLabelElegir() {
-        return labelElegir;
-    }
-
-    public void setLabelElegir(JLabel labelElegir) {
-        this.labelElegir = labelElegir;
-    }
-
-    public JButton getButtonComprobar() {
-        return buttonComprobar;
-    }
-
-    public void setButtonComprobar(JButton buttonComprobar) {
-        this.buttonComprobar = buttonComprobar;
-    }
-
-    public JButton getButtonReset() {
-        return buttonReset;
-    }
-
-    public void setButtonReset(JButton buttonReset) {
-        this.buttonReset = buttonReset;
-    }
-
-    public JTextField getTextIngreso() {
-        return textIngreso;
-    }
-
-    public void setTextIngreso(JTextField textIngreso) {
-        this.textIngreso = textIngreso;
-    }
-
-    public JMenu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(JMenu menu) {
-        this.menu = menu;
-    }
-
-    public JMenuItem getMenuItem() {
-        return menuItem;
-    }
-
-    public void setMenuItem(JMenuItem menuItem) {
-        this.menuItem = menuItem;
     }
 }

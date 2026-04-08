@@ -30,12 +30,12 @@ public class PanelButton extends JPanel {
 
         iconImage = ponerFoto(rutaFotos[0], 40);
         buttonUno = new JButton(iconImage);
-        buttonUno.setActionCommand("Dream Realm");
+        buttonUno.setActionCommand("Dream");
         buttonUno.addActionListener(principal);
 
         iconImage = ponerFoto(rutaFotos[1], 40);
         buttonDos = new JButton(iconImage);
-        buttonDos.setActionCommand("Nightmare Spell");
+        buttonDos.setActionCommand("Spell");
         buttonDos.addActionListener(principal);
 
         iconImage = ponerFoto(rutaFotos[2], 40);
@@ -45,7 +45,7 @@ public class PanelButton extends JPanel {
 
         iconImage = ponerFoto(rutaFotos[3], 40);
         buttonCuatro = new JButton(iconImage);
-        buttonCuatro.setActionCommand("Nightmare Creature");
+        buttonCuatro.setActionCommand("Creature");
         buttonCuatro.addActionListener(principal);
 
         iconImage = ponerFoto(rutaFotos[4], 40);
@@ -91,13 +91,6 @@ public class PanelButton extends JPanel {
         icon = new ImageIcon(imagen);
         return icon;
     }
-
-//    @Override
-//    public void actionPerformed(ActionEvent ae) {
-//        if (al.pulsarBotónÍcono(ae.getActionCommand())) {
-//            buttonCinco.setText("Luffy");
-//        }
-//    }
 
     public JButton getButtonUno() {
         return buttonUno;
