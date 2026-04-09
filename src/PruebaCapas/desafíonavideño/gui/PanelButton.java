@@ -9,8 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PanelButton extends JPanel {
-    public JButton buttonUno, buttonDos, buttonTres, buttonCuatro, buttonCinco, buttonSeis, buttonSiete,
+    private JButton buttonUno, buttonDos, buttonTres, buttonCuatro, buttonCinco, buttonSeis, buttonSiete,
     buttonOcho;
+    private JButton[] buttons;
     public ImageIcon iconImage;
     public AdivinanzasLógica al = new AdivinanzasLógica();
     public String[] rutaFotos = {
@@ -68,6 +69,9 @@ public class PanelButton extends JPanel {
         buttonOcho.setActionCommand("Haki");
         buttonOcho.addActionListener(principal);
 
+        buttons = new  JButton[]{buttonUno, buttonDos, buttonTres, buttonCuatro, buttonCinco, buttonSeis,
+        buttonSiete, buttonOcho};
+
         add(new JSeparator(), "growx, span, wrap");
 
         add(buttonCinco, "gapleft 70");
@@ -90,6 +94,14 @@ public class PanelButton extends JPanel {
         Image imagen = icon.getImage().getScaledInstance(tamaño, tamaño, Image.SCALE_SMOOTH);
         icon = new ImageIcon(imagen);
         return icon;
+    }
+
+    public JButton[] getButtons() {
+        return buttons;
+    }
+
+    public void setButtons(JButton[] buttons) {
+        this.buttons = buttons;
     }
 
     public JButton getButtonUno() {

@@ -1,5 +1,6 @@
 package PruebaCapas.desafíonavideño.gui;
 
+import PruebaCapas.desafíonavideño.logic.AdivinanzasComprobación;
 import PruebaCapas.desafíonavideño.logic.AdivinanzasLógica;
 import net.miginfocom.swing.MigLayout;
 
@@ -21,6 +22,7 @@ public class UIDesafíoNavideño implements ActionListener {
     private JMenu menu;
     private JMenuItem menuItem;
     private AdivinanzasLógica al = new AdivinanzasLógica();
+    private AdivinanzasComprobación ac = new AdivinanzasComprobación();
 
     public UIDesafíoNavideño() {
         frame = new JFrame("Juego");
@@ -77,31 +79,45 @@ public class UIDesafíoNavideño implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("Ingreso")) {
             textIngreso.setText("Angel");
-            panelTextArea.getTextArea().setText(al.sopaOPUno);
+            panelTextArea.getTextArea().setText(al.getSopaOPUno());
+        }
+
+        if (ae.getActionCommand().equals("Reset")) {
+            resetear();
         }
 
         if (al.pulsarBotónÍcono(ae.getActionCommand())) {
             labelElegir.setText(al.getTema());
             setLabelButton((JButton) ae.getSource());
+
+            for (JButton botón: panelButton.getButtons()) {
+                if (!botón.getActionCommand().equals(al.getObjeto())) {
+                    botón.setEnabled(false);
+                }
+            }
+
+            panelTextArea.getTextArea().setText(al.getSopaActual());
         }
 
-    }
-
-    private ImageIcon ponerFoto(String ruta, int tamaño) {
-        ImageIcon icon = new ImageIcon(ruta);
-        Image imagen = icon.getImage().getScaledInstance(tamaño, tamaño, Image.SCALE_SMOOTH);
-        icon = new ImageIcon(imagen);
-        return icon;
     }
 
     private JLabel generarLabel(String nombre, int tamañoFuente) {
         JLabel label = new JLabel(nombre);
         label.setFont(new Font("JetBrains Mono", Font.BOLD, tamañoFuente));
-
         return label;
     }
 
     private void setLabelButton(JButton button) {
         button.setText(button.getActionCommand());
+    }
+
+    private void resetear() {
+        labelElegir.setText("Elige el objeto: ");
+        textIngreso.setText("");
+        panelTextArea.getTextArea().setText("");
+        for (JButton botón: panelButton.getButtons()) {
+                botón.setEnabled(true);
+                botón.setText("");
+        }
     }
 }

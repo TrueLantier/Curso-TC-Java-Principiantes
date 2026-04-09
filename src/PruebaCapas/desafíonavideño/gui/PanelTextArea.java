@@ -17,8 +17,9 @@ public class PanelTextArea extends JPanel{
         textArea = new JTextArea(10, 35);
         textArea.setLineWrap(true); // Salta de línea al llegar al final
         textArea.setWrapStyleWord(true); // Corta solo espacios entre palabras.
-        textArea.setFont(new Font("JetBrains Mono", 1, 16));
+        textArea.setFont(new Font("JetBrains Mono", 1, 18));
         textArea.setForeground(Color.MAGENTA);
+        textArea.setEditable(false);
         scrollPane = new JScrollPane(textArea);
 
         JPanel panelDatos = new JPanel(new MigLayout("insets 0, gap 10, wrap 2"));

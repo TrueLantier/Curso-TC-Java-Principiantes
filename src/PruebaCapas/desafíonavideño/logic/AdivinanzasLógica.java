@@ -5,56 +5,29 @@ import PruebaCapas.desafíonavideño.gui.UIDesafíoNavideño;
 import javax.swing.*;
 
 public class AdivinanzasLógica {
-    public String sopaSSUno =
-            "DREAMBFGJKVWXYZSCQTO\n" +
-                    "BVWXYZKJGFNQTOBPRKNV\n" +
-                    "SPELLBVWXYZEQTOEEFEG\n" +
-                    "BVWXYZKJGFDQPTOLABPV\n" +
-                    "BVWXYLLEPSRQKHGLTFHB\n" +
-                    "BVWXYZKJGFEQTOIBUVIK\n" +
-                    "NEPHISBVWXAYZKJSRGSF\n" +
-                    "BVWXYDZKJGMFQTOBEVWX\n" +
-                    "BVWXYZRKJGFQTOBVWXYZ\n" +
-                    "SBVWXYZEKNEPHISBVWXY\n" +
-                    "BPVWXYZKAJGFQTOBVWXY\n" +
-                    "CREATUREBMVWXYZKJGFQ\n" +
-                    "BVWLXYZKJGFQTOBVWXYZ\n" +
-                    "BVWXLYZKJGFQTOBVWXYZ";
-
-    public String sopaOPUno =
-            "SUNNYBCDEFGHJKSLMPQR\n" +
-                    "HAKIVWXZTOPQRUBUCDEF\n" +
-                    "GBCDELUFFYPQNMOFRSTV\n" +
-                    "WXZSABCDEGHNJKLFMOPQ\n" +
-                    "RTVUWXZABCYDEFGYHIJK\n" +
-                    "HBCNDEFGJKLPARAWIGUM\n" +
-                    "BACNDEFGAHYNNUSPQRTV\n" +
-                    "BCKYDEFGRHJLMNOPQSTV\n" +
-                    "LBCIDEFGAHJKMNOPQRST\n" +
-                    "BUCDEFGJWKSLMNOPQHRT\n" +
-                    "BCFDIKAHIEGUJLMNOAPQ\n" +
-                    "BCDFEHJLGMOPNQRSTKWV\n" +
-                    "BCDEYFGHUJKLMNOPQIRS\n" +
-                    "BCDEFGHJMKLNOPYQRSTV";
-
-    public String sopa = "PQRTABCDEFGHJKLSOVXZ\n" +
-            "BVNMKLOPQRTWXZUCDYAE\n" +
-            "CDFUGHILUFFYJNOPQRST\n" +
-            "AEKGLMNOPQRSNTUVWXYZ\n" +
-            "BFJIOPQRSTUYVWXACDEG\n" +
-            "HIKWLMNOPQRSTUVWXYZA\n" +
-            "BCDAEFGHJKLMNOPQRIST\n" +
-            "UVWRXYZABCDEFGHJLKMN\n" +
-            "OPQARSTUVWXYZABCDAEF\n" +
-            "GHIJKLMNOPQRSTUVWHXY\n" +
-            "ZABCDEFGHIJKLMNOPQRS\n" +
-            "TUVWXYZABCDEFGHIJKLM\n" +
-            "NOPQRSTUVWXYZABCDEFG\n" +
-            "HIJKLMNOPQRSTUVWXYZA";
-
     private final String[] ONEPIECE = {"Luffy", "Mugiwara", "Sunny", "Haki"};
     private final String[] SHADOWSLAVE = {"Dream", "Spell", "Nephis", "Creature"};
-    private String objeto, tema;
+    private String objeto, tema, sopaActual;
+
+    public boolean pulsarBotónÍcono(String nombreBotón) {
+        for (String palabra: ONEPIECE) {
+            if (palabra.equals(nombreBotón)) {
+                tema = "One Piece";
+                objeto = nombreBotón;
+                sopaActual = SOPAOPUNO;
+                return true;
+            }
+        }
+        for (String palabra: SHADOWSLAVE) {
+            if (palabra.equals(nombreBotón)) {
+                tema = "Shadow Slave";
+                objeto = nombreBotón;
+                sopaActual = SOPASSUNO;
+                return true;
+            }
+        }
+        return false;
+    }
 
     public String getTema() {
         return tema;
@@ -81,63 +54,69 @@ public class AdivinanzasLógica {
     }
 
     public String getSopa() {
-        return sopa;
-    }
-
-    public void setSopa(String sopa) {
-        this.sopa = sopa;
+        return SOPA;
     }
 
     public String getSopaOPUno() {
-        return sopaOPUno;
-    }
-
-    public void setSopaOPUno(String sopaOPUno) {
-        this.sopaOPUno = sopaOPUno;
+        return SOPAOPUNO;
     }
 
     public String getSopaSSUno() {
-        return sopaSSUno;
+        return SOPASSUNO;
     }
 
-    public void setSopaSSUno(String sopaSSUno) {
-        this.sopaSSUno = sopaSSUno;
+    public String getSopaActual() {
+        return sopaActual;
     }
 
-    public void setLabel(JLabel label) {
-        for (String palabra: ONEPIECE) {
-            if (palabra.equals(objeto)) {
-                label.setText("One Piece: " + objeto);
-                return;
-            }
-        }
-        for (String palabra: SHADOWSLAVE) {
-            if (palabra.equals(objeto)) {
-                label.setText("Shadow Slave: " + objeto);
-                return;
-            }
-        }
+    public void setSopaActual(String sopaActual) {
+        this.sopaActual = sopaActual;
     }
 
-    public boolean pulsarBotónÍcono(String botón) {
-        for (String palabra: ONEPIECE) {
-            if (palabra.equals(botón)) {
-                tema = "One Piece";
-                objeto = botón;
-                return true;
-            }
-        }
-        for (String palabra: SHADOWSLAVE) {
-            if (palabra.equals(botón)) {
-                tema = "Shadow Slave";
-                objeto = botón;
-                return true;
-            }
-        }
-        return false;
-    }
+    private final String SOPASSUNO =
+            "DREAMBFGJKVWXYZSCQTO\n" +
+                    "BVWXYZKJGFNQTOBPRKNV\n" +
+                    "SPELLBVWXYZEQTOEEFEG\n" +
+                    "BVWXYZKJGFDQPTOLABPV\n" +
+                    "BVWXYLLEPSRQKHGLTFHB\n" +
+                    "BVWXYZKJGFEQTOIBUVIK\n" +
+                    "NEPHISBVWXAYZKJSRGSF\n" +
+                    "BVWXYDZKJGMFQTOBEVWX\n" +
+                    "BVWXYZRKJGFQTOBVWXYZ\n" +
+                    "SBVWXYZEKNEPHISBVWXY\n" +
+                    "BPVWXYZKAJGFQTOBVWXY\n" +
+                    "CREATUREBMVWXYZKJGFQ\n" +
+                    "BVWLXYZKJGFQTOBVWXYZ\n" +
+                    "BVWXLYZKJGFQTOBVWXYZ";
 
-    public void ponerNombreBotón(String nombre) {
+    private final String SOPAOPUNO =
+            "SUNNYBCDEFGHJKSLMPQR\n" +
+                    "HAKIVWXZTOPQRUBUCDEF\n" +
+                    "GBCDELUFFYPQNMOFRSTV\n" +
+                    "WXZSABCDEGHNJKLFMOPQ\n" +
+                    "RTVUWXZABCYDEFGYHIJK\n" +
+                    "HBCNDEFGJKLPARAWIGUM\n" +
+                    "BACNDEFGAHYNNUSPQRTV\n" +
+                    "BCKYDEFGRHJLMNOPQSTV\n" +
+                    "LBCIDEFGAHJKMNOPQRST\n" +
+                    "BUCDEFGJWKSLMNOPQHRT\n" +
+                    "BCFDIKAHIEGUJLMNOAPQ\n" +
+                    "BCDFEHJLGMOPNQRSTKWV\n" +
+                    "BCDEYFGHUJKLMNOPQIRS\n" +
+                    "BCDEFGHJMKLNOPYQRSTV";
 
-    }
+    private final String SOPA = "PQRTABCDEFGHJKLSOVXZ\n" +
+            "BVNMKLOPQRTWXZUCDYAE\n" +
+            "CDFUGHILUFFYJNOPQRST\n" +
+            "AEKGLMNOPQRSNTUVWXYZ\n" +
+            "BFJIOPQRSTUYVWXACDEG\n" +
+            "HIKWLMNOPQRSTUVWXYZA\n" +
+            "BCDAEFGHJKLMNOPQRIST\n" +
+            "UVWRXYZABCDEFGHJLKMN\n" +
+            "OPQARSTUVWXYZABCDAEF\n" +
+            "GHIJKLMNOPQRSTUVWHXY\n" +
+            "ZABCDEFGHIJKLMNOPQRS\n" +
+            "TUVWXYZABCDEFGHIJKLM\n" +
+            "NOPQRSTUVWXYZABCDEFG\n" +
+            "HIJKLMNOPQRSTUVWXYZA";
 }
