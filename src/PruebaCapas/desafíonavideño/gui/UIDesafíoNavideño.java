@@ -1,14 +1,16 @@
 package PruebaCapas.desafíonavideño.gui;
 
-import PruebaCapas.desafíonavideño.logic.AdivinanzasComprobación;
-import PruebaCapas.desafíonavideño.logic.AdivinanzasLógica;
+import PruebaCapas.desafíonavideño.logic.*;
 import net.miginfocom.swing.MigLayout;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.*;
 import java.io.*;
+
+/*
+    Se pueden añadir unos cuantos comprobantes.
+ */
 
 public class UIDesafíoNavideño implements ActionListener {
     private final JFrame frame;
@@ -23,6 +25,7 @@ public class UIDesafíoNavideño implements ActionListener {
     private JMenuItem menuItem;
     private AdivinanzasLógica al = new AdivinanzasLógica();
     private AdivinanzasComprobación ac = new AdivinanzasComprobación();
+    private boolean pulsarBotón = false;
 
     public UIDesafíoNavideño() {
         frame = new JFrame("Juego");
@@ -79,14 +82,31 @@ public class UIDesafíoNavideño implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("Ingreso")) {
             textIngreso.setText("Angel");
-            panelTextArea.getTextArea().setText(al.getSopaOPUno());
         }
 
         if (ae.getActionCommand().equals("Reset")) {
             resetear();
         }
 
+        if (ae.getActionCommand().equals("Comprobar")) {
+            if (comprobarJuego()) {
+                return;
+            }
+
+            ac.setTema(al.getTema());
+            ac.setElegido(al.getObjeto());
+            ac.setEncontrados(textIngreso.getText());
+            ac.comprobarElección();
+
+//            panelTextArea.getTextElegido().setText(ac.getElegido());
+//            panelTextArea.getTextEncontrados().setText(ac.getEncontrados());
+//            panelTextArea.getTextCantidad().setText(ac.getCantidad());
+
+            panelTextArea.setTextFields(ac.getElegido(), ac.getEncontrados(), ac.getCantidad(), ac.getResultados());
+        }
+
         if (al.pulsarBotónÍcono(ae.getActionCommand())) {
+            pulsarBotón = true;
             labelElegir.setText(al.getTema());
             setLabelButton((JButton) ae.getSource());
 
@@ -112,12 +132,33 @@ public class UIDesafíoNavideño implements ActionListener {
     }
 
     private void resetear() {
+        pulsarBotón = false;
         labelElegir.setText("Elige el objeto: ");
         textIngreso.setText("");
         panelTextArea.getTextArea().setText("");
+        panelTextArea.setTextFields("", "", "", "");
         for (JButton botón: panelButton.getButtons()) {
                 botón.setEnabled(true);
                 botón.setText("");
         }
     }
+
+    private boolean comprobarJuego() {
+        if (textIngreso.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un número.");
+            return true;
+        }
+
+        if (!pulsarBotón) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un botón.");
+            return true;
+        }
+
+        return false;
+    }
 }
+
+/*
+JOptionPane.showMessageDialog(null, "Desarrollado por" +
+                    " Angel Eduardo Pedraza Ordoñez.");
+ */

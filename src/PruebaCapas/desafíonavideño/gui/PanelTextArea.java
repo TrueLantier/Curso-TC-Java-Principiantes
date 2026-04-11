@@ -41,10 +41,10 @@ public class PanelTextArea extends JPanel{
 
         panelDatos.add(labelElegido, "align right");
         panelDatos.add(textElegido);
-        panelDatos.add(labelCantidad,"align right");
-        panelDatos.add(textCantidad);
         panelDatos.add(labelEncontrados, "align right");
         panelDatos.add(textEncontrados);
+        panelDatos.add(labelCantidad,"align right");
+        panelDatos.add(textCantidad);
         panelDatos.add(labelResultado,"align right");
         panelDatos.add(textResultado);
 
@@ -57,6 +57,13 @@ public class PanelTextArea extends JPanel{
         label.setFont(new Font("JetBrains Mono", Font.BOLD, 14));
 
         return label;
+    }
+
+    public void setTextFields(String elegido, String encontrados, String cantidad, String resultado) {
+        textElegido.setText(elegido);
+        textEncontrados.setText(encontrados);
+        textCantidad.setText(cantidad);
+        textResultado.setText(resultado);
     }
 
     public JTextArea getTextArea() {
