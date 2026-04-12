@@ -1,4 +1,4 @@
-package SwingMod17;
+package PruebaCapas.externo.swingmod17;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.*;

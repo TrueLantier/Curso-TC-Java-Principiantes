@@ -8,10 +8,6 @@ import java.awt.event.*;
 import java.awt.event.*;
 import java.io.*;
 
-/*
-    Se pueden añadir unos cuantos comprobantes.
- */
-
 public class UIDesafíoNavideño implements ActionListener {
     private final JFrame frame;
     private JPanel mainPanel;
@@ -26,6 +22,7 @@ public class UIDesafíoNavideño implements ActionListener {
     private AdivinanzasLógica al = new AdivinanzasLógica();
     private AdivinanzasComprobación ac = new AdivinanzasComprobación();
     private boolean pulsarBotón = false;
+    private boolean juegoActivo = false;
 
     public UIDesafíoNavideño() {
         frame = new JFrame("Juego");
@@ -41,11 +38,14 @@ public class UIDesafíoNavideño implements ActionListener {
         // "fill" para que los componentes usen el espacio sobrante.
 
         labelCartel = generarLabel("Adivinanzas", 28);
+        labelCartel.setForeground(Color.RED);
         labelIngreso = generarLabel("Ingrese la cantidad de veces que cree que aparece el objeto.", 14);
         labelElegir = generarLabel("Elige el objeto: ", 14);
+        labelElegir.setForeground(Color.ORANGE);
 
         textIngreso = new JTextField(10);
         textIngreso.setActionCommand("Ingreso");
+        textIngreso.setForeground(Color.MAGENTA);
         textIngreso.addActionListener(this);
 
         buttonComprobar = new JButton("Comprobar");
@@ -92,15 +92,12 @@ public class UIDesafíoNavideño implements ActionListener {
             if (comprobarJuego()) {
                 return;
             }
+            juegoActivo = true;
 
             ac.setTema(al.getTema());
             ac.setElegido(al.getObjeto());
             ac.setEncontrados(textIngreso.getText());
             ac.comprobarElección();
-
-//            panelTextArea.getTextElegido().setText(ac.getElegido());
-//            panelTextArea.getTextEncontrados().setText(ac.getEncontrados());
-//            panelTextArea.getTextCantidad().setText(ac.getCantidad());
 
             panelTextArea.setTextFields(ac.getElegido(), ac.getEncontrados(), ac.getCantidad(), ac.getResultados());
         }
@@ -133,6 +130,7 @@ public class UIDesafíoNavideño implements ActionListener {
 
     private void resetear() {
         pulsarBotón = false;
+        juegoActivo = false;
         labelElegir.setText("Elige el objeto: ");
         textIngreso.setText("");
         panelTextArea.getTextArea().setText("");
@@ -154,11 +152,18 @@ public class UIDesafíoNavideño implements ActionListener {
             return true;
         }
 
+        if (juegoActivo) {
+            JOptionPane.showMessageDialog(null, "Juego activo. Reinicie.");
+            return true;
+        }
+
+        try {
+            Integer.parseInt(textIngreso.getText().trim());
+        }   catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Has introducido el número incorrectamente.");
+            return true;
+        }
+
         return false;
     }
 }
-
-/*
-JOptionPane.showMessageDialog(null, "Desarrollado por" +
-                    " Angel Eduardo Pedraza Ordoñez.");
- */

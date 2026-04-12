@@ -1,4 +1,4 @@
-package SwingMod17;
+package PruebaCapas.externo.swingmod17;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;

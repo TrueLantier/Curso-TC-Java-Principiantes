@@ -1,7 +1,5 @@
 package PruebaCapas.desafíonavideño.logic;
 
-import PruebaCapas.desafíonavideño.gui.UIDesafíoNavideño;
-
 import javax.swing.*;
 
 public class AdivinanzasLógica {

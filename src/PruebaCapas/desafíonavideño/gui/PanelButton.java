@@ -2,10 +2,8 @@ package PruebaCapas.desafíonavideño.gui;
 
 import PruebaCapas.desafíonavideño.logic.AdivinanzasLógica;
 import net.miginfocom.swing.MigLayout;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PanelButton extends JPanel {
@@ -27,7 +25,7 @@ public class PanelButton extends JPanel {
     };
 
     public PanelButton(ActionListener principal) {
-        setLayout(new MigLayout("insets 0, gap 40 10 10 10"));
+        setLayout(new MigLayout("fillx, insets 0, gap 40 10 10 10"));
 
         iconImage = ponerFoto(rutaFotos[0], 40);
         buttonUno = new JButton(iconImage);

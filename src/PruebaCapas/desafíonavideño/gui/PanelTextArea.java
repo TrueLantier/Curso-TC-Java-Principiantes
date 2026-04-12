@@ -1,7 +1,6 @@
 package PruebaCapas.desafíonavideño.gui;
 
 import net.miginfocom.swing.MigLayout;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -32,12 +31,16 @@ public class PanelTextArea extends JPanel{
 
         textElegido = new JTextField(10);
         textElegido.setEditable(false);
+        textElegido.setForeground(Color.ORANGE);
         textCantidad = new JTextField(10);
         textCantidad.setEditable(false);
+        textCantidad.setForeground(Color.GREEN);
         textEncontrados = new JTextField(10);
         textEncontrados.setEditable(false);
+        textEncontrados.setForeground(Color.GREEN);
         textResultado = new JTextField(10);
         textResultado.setEditable(false);
+        textResultado.setForeground(Color.RED);
 
         panelDatos.add(labelElegido, "align right");
         panelDatos.add(textElegido);
