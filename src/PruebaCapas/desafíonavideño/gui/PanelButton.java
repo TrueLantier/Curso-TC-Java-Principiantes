@@ -1,8 +1,8 @@
 package PruebaCapas.desafíonavideño.gui;
 
-import PruebaCapas.desafíonavideño.logic.AdivinanzasLógica;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -10,8 +10,12 @@ public class PanelButton extends JPanel {
     private JButton buttonUno, buttonDos, buttonTres, buttonCuatro, buttonCinco, buttonSeis, buttonSiete,
     buttonOcho;
     private JButton[] buttons;
+    private Timer timer = new Timer(1000, e -> moverResaltado());
     public ImageIcon iconImage;
-    public AdivinanzasLógica al = new AdivinanzasLógica();
+    private final Border bordeResaltado = BorderFactory.createLineBorder(Color.RED, 4);
+    private final Border bordeSeleccionado = BorderFactory.createLineBorder(Color.GREEN, 4);
+    private Border bordeGeneral;
+    private int indiceActual = 4;
     public String[] rutaFotos = {
             "src/PruebaCapas/resources/images/dream-realm.png",
             "src/PruebaCapas/resources/images/the-spell.png",
@@ -30,42 +34,45 @@ public class PanelButton extends JPanel {
         iconImage = ponerFoto(rutaFotos[0], 40);
         buttonUno = new JButton(iconImage);
         buttonUno.setActionCommand("Dream");
-        buttonUno.addActionListener(principal);
+        hacerBotón(buttonUno, principal);
+
+        bordeGeneral = buttonUno.getBorder();
 
         iconImage = ponerFoto(rutaFotos[1], 40);
         buttonDos = new JButton(iconImage);
         buttonDos.setActionCommand("Spell");
-        buttonDos.addActionListener(principal);
+        hacerBotón(buttonDos, principal);
 
         iconImage = ponerFoto(rutaFotos[2], 40);
         buttonTres = new JButton(iconImage);
         buttonTres.setActionCommand("Nephis");
-        buttonTres.addActionListener(principal);
+        hacerBotón(buttonTres, principal);
 
         iconImage = ponerFoto(rutaFotos[3], 40);
         buttonCuatro = new JButton(iconImage);
         buttonCuatro.setActionCommand("Creature");
-        buttonCuatro.addActionListener(principal);
+        hacerBotón(buttonCuatro, principal);
 
         iconImage = ponerFoto(rutaFotos[4], 40);
         buttonCinco = new JButton(iconImage);
         buttonCinco.setActionCommand("Luffy");
-        buttonCinco.addActionListener(principal);
+        hacerBotón(buttonCinco, principal);
+        hacerBotón(buttonUno, principal);
 
         iconImage = ponerFoto(rutaFotos[5], 40);
         buttonSeis = new JButton(iconImage);
         buttonSeis.setActionCommand("Mugiwara");
-        buttonSeis.addActionListener(principal);
+        hacerBotón(buttonSeis, principal);
 
         iconImage = ponerFoto(rutaFotos[6], 40);
         buttonSiete = new JButton(iconImage);
         buttonSiete.setActionCommand("Sunny");
-        buttonSiete.addActionListener(principal);
+        hacerBotón(buttonSiete, principal);
 
         iconImage = ponerFoto(rutaFotos[7], 40);
         buttonOcho = new JButton(iconImage);
         buttonOcho.setActionCommand("Haki");
-        buttonOcho.addActionListener(principal);
+        hacerBotón(buttonOcho, principal);
 
         buttons = new  JButton[]{buttonUno, buttonDos, buttonTres, buttonCuatro, buttonCinco, buttonSeis,
         buttonSiete, buttonOcho};
@@ -77,7 +84,7 @@ public class PanelButton extends JPanel {
         add(buttonSiete);
         add(buttonOcho, "wrap");
 
-        add(new JSeparator(), "growx, span, wrap");
+        //add(new JSeparator(), "growx, span, wrap");
 
         add(buttonUno, "gapleft 70");
         add(buttonDos);
@@ -85,6 +92,8 @@ public class PanelButton extends JPanel {
         add(buttonCuatro, "wrap");
 
         add(new JSeparator(), "growx, span, wrap");
+
+        generar();
     }
 
     private ImageIcon ponerFoto(String ruta, int tamaño) {
@@ -92,6 +101,52 @@ public class PanelButton extends JPanel {
         Image imagen = icon.getImage().getScaledInstance(tamaño, tamaño, Image.SCALE_SMOOTH);
         icon = new ImageIcon(imagen);
         return icon;
+    }
+
+    private void hacerBotón(JButton button, ActionListener pantalla) {
+        button.setBackground(Color.BLACK);
+        button.addActionListener(pantalla);
+    }
+
+    public void generar() {
+        if (timer.isRunning()) {
+            timer.stop();
+        }
+
+        buttons[indiceActual].setBorder(bordeResaltado);
+
+        timer = new Timer(1000, e -> moverResaltado());
+        timer.start();
+
+        for (int i = 0; i < buttons.length; i++) {
+            final int idx = i;
+            buttons[i].addActionListener(e -> seleccionarBoton(idx));
+        }
+    }
+
+    private void moverResaltado() {
+        buttons[indiceActual].setBorder(bordeGeneral);
+        indiceActual = (indiceActual + 1) % buttons.length;
+        buttons[indiceActual].setBorder(bordeResaltado);
+    }
+
+    private void seleccionarBoton(int index) {
+        if (timer.isRunning()) {
+            timer.stop();
+        }
+
+        for (JButton button: buttons) {
+            button.setBorder(bordeGeneral);
+        }
+
+        buttons[index].setBorder(bordeSeleccionado);
+        indiceActual = index;
+    }
+
+    private void seleccionarBotonActual() {
+        if (timer.isRunning()) {
+            seleccionarBoton(indiceActual);
+        }
     }
 
     public JButton[] getButtons() {

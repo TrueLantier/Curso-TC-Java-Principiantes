@@ -37,7 +37,7 @@ public class UIDesafíoNavideño implements ActionListener {
         //mainPanel = new JPanel(new MigLayout("debug, insets 20, gap 10, wrap 1"));
         // "fill" para que los componentes usen el espacio sobrante.
 
-        labelCartel = generarLabel("Adivinanzas", 28);
+        labelCartel = generarLabel("Sopa de Palabras", 28);
         labelCartel.setForeground(Color.RED);
         labelIngreso = generarLabel("Ingrese la cantidad de veces que cree que aparece el objeto.", 14);
         labelElegir = generarLabel("Elige el objeto: ", 14);
@@ -50,16 +50,18 @@ public class UIDesafíoNavideño implements ActionListener {
 
         buttonComprobar = new JButton("Comprobar");
         buttonComprobar.setFont(new Font("JetBrains Mono", Font.BOLD, 14));
+        buttonComprobar.setBackground(Color.BLUE);
         buttonComprobar.addActionListener(this);
 
         buttonReset = new JButton("Reset");
         buttonReset.setFont(new Font("JetBrains Mono", Font.BOLD, 14));
+        buttonReset.setBackground(Color.BLUE);
         buttonReset.addActionListener(this);
 
         panelButton = new PanelButton(this);
         panelTextArea = new PanelTextArea();
 
-        mainPanel.add(labelCartel, "gapleft 30%");
+        mainPanel.add(labelCartel, "gapleft 25%");
         mainPanel.add(labelIngreso, "gapleft 30");
         mainPanel.add(textIngreso, "align center");
         mainPanel.add(labelElegir, "align center");
@@ -72,7 +74,7 @@ public class UIDesafíoNavideño implements ActionListener {
 
     private void setupFrame() {
         frame.setSize(600, 700);
-        // frame.setResizable(false);
+        frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -139,6 +141,8 @@ public class UIDesafíoNavideño implements ActionListener {
                 botón.setEnabled(true);
                 botón.setText("");
         }
+
+        panelButton.generar();
     }
 
     private boolean comprobarJuego() {
