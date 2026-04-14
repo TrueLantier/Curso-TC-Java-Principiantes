@@ -8,6 +8,10 @@ import java.awt.event.*;
 import java.awt.event.*;
 import java.io.*;
 
+/**
+  Falta implementar el random, para seleccionar distintas sopas de letras.
+ */
+
 public class UIDesafíoNavideño implements ActionListener {
     private final JFrame frame;
     private JPanel mainPanel;
@@ -33,6 +37,13 @@ public class UIDesafíoNavideño implements ActionListener {
     private void initComponents() {
         menuBar = new JMenuBar();
         frame.setJMenuBar(menuBar);
+
+        menu = new JMenu("Creador");
+        menuItem = new JMenuItem("El Creador");
+        menuItem.addActionListener(this);
+        menu.add(menuItem);
+        menuBar.add(menu);
+
         mainPanel = new JPanel(new MigLayout("insets 20, gap 10, wrap 1" ));
         //mainPanel = new JPanel(new MigLayout("debug, insets 20, gap 10, wrap 1"));
         // "fill" para que los componentes usen el espacio sobrante.
@@ -84,6 +95,11 @@ public class UIDesafíoNavideño implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getActionCommand().equals("Ingreso")) {
             textIngreso.setText("Angel");
+        }
+
+        if (ae.getActionCommand().equals("El Creador")) {
+            JOptionPane.showMessageDialog(null, "Desarrollado por Angel Eduardo " +
+                    "Pedraza Ordoñez");
         }
 
         if (ae.getActionCommand().equals("Reset")) {
