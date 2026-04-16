@@ -2,10 +2,8 @@ package PruebaCapas.lógica.main;
 
 import PruebaCapas.agendatelefónica.gui.UIAgenda;
 import PruebaCapas.desafíonavideño.gui.UIDesafíoNavideño;
-import com.formdev.flatlaf.FlatDarculaLaf;
-import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.*;
 import com.formdev.flatlaf.themes.*;
-
 import javax.swing.*;
 
 public class Main {
