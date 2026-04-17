@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AdministrarEstacionamiento {
-    List<Cliente> listaClientes = new ArrayList<>();
-    int tipoEstacionamiento;
-    int tipoOperación;
-    int entero;
-    Scanner sc = new Scanner(System.in);
+    private List<Cliente> listaClientes = new ArrayList<>();
+    private int entero;
+    private double ingresos = 0;
+    private Scanner sc = new Scanner(System.in);
+    private int[] estacionamientos = new int[10];
 
     public AdministrarEstacionamiento() {
         bienvenida();
@@ -37,17 +37,22 @@ public class AdministrarEstacionamiento {
 
         Cliente cliente = new Cliente(nombre, patente);
         cliente.setFactura(asignarFactura(entero));
+        ingresos += cliente.getFactura();
         listaClientes.add(cliente);
         System.out.println("Cliente registrado exitosamente.");
     }
 
     private double asignarFactura(int factura) {
         if (factura == 5) {
-            return 15 - (15.0 * (5.0/100));
+            estacionamientos[4]++;
+            return 15 - (15.0 * 0.05);
         }
         if (factura == 10) {
+            estacionamientos[9]++;
             return 27;
         }
+
+        estacionamientos[factura-1]++;
         return factura * 3;
     }
 
@@ -82,10 +87,11 @@ public class AdministrarEstacionamiento {
 
     private void operación() {
         uno: while (true) {
-            System.out.println("¿Qué operación desea realizar?");
-            System.out.println("1- Agregar cliente.\n2-Consultar información de cliente.\n3- Salir.");
+            System.out.println("\n¿Qué operación desea realizar?");
+            System.out.println("1- Agregar cliente.\n2-Consultar información de cliente.\n3- Salir." +
+                    "\n4- Ver información de los estacionamientos.");
 
-            if (verificarEntrada(1, 3)) {
+            if (verificarEntrada(1, 4)) {
                 continue ;
             }
 
@@ -98,6 +104,9 @@ public class AdministrarEstacionamiento {
                     break;
                 case 3:
                     break uno;
+                case 4:
+                    verInfoEstacionamientos();
+                    break ;
             }
         }
     }
@@ -117,5 +126,25 @@ public class AdministrarEstacionamiento {
             return true;
         }
         return false;
+    }
+
+    private void verInfoEstacionamientos() {
+        System.out.println("Cantidad de estacionamientos por hora:");
+        for (int i = 0; i < estacionamientos.length; i++) {
+            if (i == 0) {
+                System.out.println((i+1) + " hora: " + estacionamientos[0]);
+                continue;
+            }
+            if ((i != 4) && (i != 9)) {
+                System.out.println((i+1) + " horas: " + estacionamientos[i]);
+                continue;
+            }
+            if (i == 4) {
+                System.out.println((i+1) + " Media jornada: " + estacionamientos[i]);
+                continue;
+            }
+            System.out.println((i+1) + " Jornada completa: " + estacionamientos[i]);
+        }
+        System.out.println("Ingresos totales: " + ingresos);
     }
 }
