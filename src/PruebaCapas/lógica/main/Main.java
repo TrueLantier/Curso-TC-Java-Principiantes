@@ -1,6 +1,7 @@
 package PruebaCapas.lógica.main;
 
 import PruebaCapas.agendatelefónica.gui.UIAgenda;
+import PruebaCapas.copiadora.gui.Copiadora;
 import PruebaCapas.desafíonavideño.gui.UIDesafíoNavideño;
 import com.formdev.flatlaf.*;
 import com.formdev.flatlaf.themes.*;
