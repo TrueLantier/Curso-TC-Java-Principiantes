@@ -100,6 +100,8 @@ pantalla y menú de **Temas** para cambiar el Look and Feel. Es el más sencillo
 2. Ábrelo en tu IDE.
 3. Ejecuta el método `main` del proyecto que quieras probar.
 
+<!--
+
 > **[ESCRIBE TÚ] Nombre de la clase `Main` de cada proyecto**, o la ruta exacta, para que quien clone sepa cuál ejecutar.
 
 ### Dependencias
