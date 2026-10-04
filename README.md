@@ -100,6 +100,15 @@ pantalla y menú de **Temas** para cambiar el Look and Feel. Es el más sencillo
 2. Ábrelo en tu IDE.
 3. Ejecuta el método `main` del proyecto que quieras probar.
 
+## Autor
+
+> **Angel Eduardo Pedraza Ordoñez**
+
+## Créditos
+
+Los personajes e íconos de *One Piece* y *Shadow Slave* pertenecen a sus respectivos creadores. 
+Se usan aquí con fines educativos. Los íconos fueron generados con IA.
+
 <!--
 
 > **[ESCRIBE TÚ] Nombre de la clase `Main` de cada proyecto**, o la ruta exacta, para que quien clone sepa cuál ejecutar.
@@ -123,13 +132,3 @@ FlatLaf y MigLayout se agregaron **manualmente** (todavía no usaba Maven cuando
 > **[ESCRIBE TÚ] Agrega lo que realmente planees.** Por ejemplo, migrar a Maven o añadir persistencia a la agenda. Solo si lo vas a hacer.
 
 ---
-
-## Autor
-
-> **[ESCRIBE TÚ] Tu nombre, GitHub y el contacto que quieras mostrar.**
-
-## Créditos
-
-Los personajes e íconos de *One Piece* y *Shadow Slave* pertenecen a sus respectivos creadores. Se usan aquí con fines educativos.
-
-> **[REVISA] Origen de los íconos y fondos.** Si algunos no son tuyos, indica la fuente aquí.
